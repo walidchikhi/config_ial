@@ -1,0 +1,58 @@
+#!/bin/bash
+
+show_help() {
+cat << EOF
+Usage: ${0##*/} [-h] [-c CONFIG_FILE] [-j JOB_NAME]
+Example: ${0##*/} -c config.txt -j e927
+
+This script does something useful.
+
+    -h               display this help and exit
+    -c CONFIG_FILE   specify the configuration file
+    -j JOB_NAME      specify the job name (allowed values: e927, e927s, e001)
+
+EOF
+}
+
+while getopts ":hc:j:" opt; do
+    case $opt in
+        h)
+            show_help
+            exit 0
+            ;;
+        c)
+            CONFIG_FILE=$OPTARG
+            ;;
+        j) case $OPTARG in
+	    e927|e927s|e001) JOB_NAME=$OPTARG
+                              echo "Job $JOB_NAME is running";;
+              *) echo "Invalid job: $OPTARG. Allowed values: e927, e927s, e001"
+               exit 1;;
+	   esac;;    
+        \?)
+            echo "Invalid option: -$OPTARG" >&2
+            show_help
+            exit 1
+            ;;
+        :)
+            echo "Option -$OPTARG requires an argument." >&2
+            show_help
+            exit 1
+            ;;
+    esac
+done
+
+if [[ -z $CONFIG_FILE ]]; then
+    echo "Configuration file not specified." >&2
+    show_help
+    exit 1
+fi
+
+if [[ -z $JOB_NAME ]]; then
+    echo "Job name not specified." >&2
+    show_help
+    exit 1
+fi
+
+# rest of your script goes here
+

@@ -1,0 +1,101 @@
+@@ Mon Apr 10 14:20:54 CET 2023
+ 
+:: initializing oneAPI environment ...
+   slurm_script: BASH_VERSION = 4.4.20(1)-release
+:: advisor -- latest
+:: ccl -- latest
+:: clck -- latest
+:: compiler -- latest
+:: dal -- latest
+:: debugger -- latest
+:: dev-utilities -- latest
+:: dnnl -- latest
+:: dpcpp-ct -- latest
+:: dpl -- latest
+:: inspector -- latest
+:: intelpython -- latest
+:: ipp -- latest
+:: ippcp -- latest
+:: itac -- latest
+:: mkl -- latest
+:: mpi -- latest
+:: tbb -- latest
+:: vpl -- latest
+:: vtune -- latest
+:: oneAPI environment initialized ::
+ 
+config/config_AROME_3000m
+/onm/dem/home/wchikhi/output/AROME/CPL/01022023 /onm/dem/home/wchikhi/tmp/AROME/AROM-E927-01022023
+202302
+
+--- Start of IFS output from processor    1 ----------------------------------
+ NULOUT= 20 NULNAM=  4
+ NPOSSH= 51 NPODDH= 53 NULCO= 55 NTIDE = 56
+ NULDILA= 46 NULCONT= 47 NINISH= 81 NINIGG= 82 NFGISH= 83
+ NTRJSH= 71 NPPPSH= 91 NULCL1= 10 NULCL2= 11
+ NULASE= 16 NULASS= 17 NULRCF= 94 NULHWF= 93
+ NULUSR1 =  95 NULUSR2 =  96 NULUSR3 =  97 NULUSR4 =  98 NULUSR5 =  99
+ NEFLS =  78 NEFLSS =  73
+ NULFP01 =  54 NULFP02 =  50 NULFP03 =  43 NULFP04 =  30 NULFP05 =  19 NULFP06 =  18
+ NULFP07 =  14 NULFP08 =  13 NULFP09 =  12 NULFP10 =   9 NULFPOS =  74 NSCRTCH =   8
+ NULERR =   0 NULRAD =  25 NULRTL =  26
+ NULFP11 =   7 NULFP12 =  32 NULFP13 =  33 NULFP14 =  34 NULFP15 =  35
+ NEGASH =  39
+ NULTRAJHR =  72
+ NULTRAJBG =  83
+ NUIO_SERV_LOG =  67
+ --- End of logical units setup ---------------------------------------- 
+ 
+  ----- PRINTINGS IN SUMPINI_PRT: 
+  NPROC =     128
+  NPRGPNS =      16
+  NPRGPEW =       8
+  NPRTRW =     128
+  NPRTRV =       1
+  NPRTRN =       1
+  NPRTRNS =     128
+  MYPROC =       1
+  MYSETW =       1
+  MYSETV =       1
+  MYSETA =       1
+  MYSETB =       1
+  MYSETM =       1
+  MYSETN =       1
+  NSPECRESMIN =     128
+  MP_TYPE =       2
+  MBX_SIZE =   2048000000
+  NOUTPUT =       1
+  LOUTPUT =  T
+  LMPDIAG =  F
+  LMPOFF =  F
+  LOPT_SCALAR =  T
+  LOPT_RS6K =  F
+  LSCMEC =  F
+  NPRINTLEV =       0
+  LSTATS =  F
+  LSTATSCPU =  F
+  LSYNCSTATS =  F
+  LDETAILED_STATS =  F
+  LXML_STATS =  F
+  LSTATS_MEM =  F
+  LSTATS_ALLOC =  F
+  LBARRIER_STATS =  F
+  LBARRIER_STATS2 =  F
+  NSTATS_MEM =       0
+  NPRNT_STATS =       2
+  LSTATS_OMP =  F
+  LSTATS_COMMS =  F
+  LSTATS_MPL =  F
+  LTRACE_STATS =  F
+  LGSTATS_LABEL =  T
+ --- Set up machine-specific constants---------------------------------- 
+ NINTLEN=  4 NREALEN=  8 NLOGLEN=  8 NDBLLEN= 16
+ --- Set up command line arguments ------------------------------------- 
+ ---- Set up files names -----
+ LINC =  F CFNHWF = hiwif LBCINC =  F
+ NCADFORM =  1 NTIMEFMT =  0
+ CEFNLSH = ELSCFFPOSALBC
+ CFNCLIMIN = Const.Clim CFNCLIMOUT = const.clim. CCLIMINC =          CFPEXTSFX =     .sfx
+  INPUT FILE NOT FOUND 
+ ABOR1 CALLED
+ INPUT FILE NOT FOUND

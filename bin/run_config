@@ -22,7 +22,8 @@ while getopts ":hc:j:" opt; do
             ;;
         c)
             CONFIG_FILE=$OPTARG
-            ;;
+            [ -f $CONFIG_FILE ] && echo "File exists" || { echo "File does not exist"; exit 1; } 
+	    ;;
         j) case $OPTARG in
 	    e927|e927s|e001) JOB_NAME=$OPTARG
                               echo "Job $JOB_NAME is running";;
@@ -54,5 +55,18 @@ if [[ -z $JOB_NAME ]]; then
     exit 1
 fi
 
-# rest of your script goes here
+# rest of my script goes here
 
+current_dir=`pwd`
+
+export current_dir=$current_dir
+
+# ==== RUN JOB ==== #
+
+
+
+export CONFIG_FILE=${CONFIG_FILE} 
+
+
+echo 'The Job Running : '   ${current_dir}/src/${JOB_NAME}/job
+sbatch ${current_dir}/src/${JOB_NAME}/job  $CONFIG_FILE

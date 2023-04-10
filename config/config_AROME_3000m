@@ -1,0 +1,46 @@
+#==DATE
+DATE=20230201
+AA=`echo $DATE |cut -c1-4`
+MM=`echo $DATE |cut -c5-6`
+DD=`echo $DATE |cut -c7-8`
+rr=00
+
+#==TMPDIR
+
+tmpdir_e927=${HOME}/tmp/AROME/AROM-E927-${DD}${MM}${AA}
+tmpdir_927_surfex=
+
+#== IO DATA DIRS 
+OUT_CPL=/onm/dem/home/wchikhi/output/AROME/CPL/$DD$MM$AA
+INP_DATA=/onm/dem/home/wchikhi/tmp/INPUT/${DD}${MM}${AA}
+INP_DATA_name= 
+OUT_ICMSH=
+OUT_FPOS=
+
+#== EXEX
+EXECUTABLE=/onm/dem/home/wchikhi/pack/46t1_bf03.01.INTEL.x/bin/MASTERODB
+execution_bin=/opt/ohpc/pub/intel/oneapi/mpi/latest/bin/mpirun
+
+#== namelists
+namel_e927=/onm/dem/home/wchikhi/majoper/arome_90/e927/namel_e927_cy46
+namel_e927_sfx=
+namel_e927_sfx_cpl=
+namel_e001=
+
+#== Ech and other staffs
+nb_echeance=
+start_ech=00
+end_ech=02
+step_ech=01
+echeance_list=
+ecoclimap_dir=${HOME}/exp/V8.0
+
+
+#== Const Clims
+
+clim_model_bigger=/onm/dem/home/wchikhi/exp/aladin/ALADIN_model_6km_m${MM}
+clim_model_config=/onm/dem/home/wchikhi/exp/arome/AROME_model_m${MM}
+clim_bdap_config=
+clim_pgd= 
+
+

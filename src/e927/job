@@ -1,0 +1,121 @@
+#!/bin/bash
+#SBATCH --partition=Researches
+#SBATCH --job-name="AROME-E927"
+#SBATCH -n 128
+#SBATCH -c 1
+#SBATCH -N 8     
+#SBATCH -t 08:00:00
+#SBATCH --exclusive
+#SBATCH --verbose
+#SBATCH --output=stdout_e927
+#SBATCH --error=stderr_e927
+# -N : nombre de noeuds
+# -n : nombre TOTAL de taches MPI
+# -c : nombre de threads (OMP)
+echo "@@ `date`"
+. ~/.bashrc
+
+MPI_TASKS=$SLURM_NTASKS
+NPROC=$MPI_TASKS
+MPITASKS_PER_NODE=$((SLURM_NTASKS/SLURM_JOB_NUM_NODES))
+# ========================================= DZ
+export EC_PROFILE_HEAP=0
+#=======BEGIN FABRIC============= 
+#export I_MPI_DEBUG=100
+#=======END FABRIC===============
+export F_PROGINF=DETAIL
+export F_FTRACE=FMT2
+export F_RECLUNIT=BYTE
+export F_SYSLEN=1024
+export F_FMTBUF=131072
+export F_SETBUF=32768
+export F_SETBUF6=0
+export F_SETBUF0=0
+export F_ERRCNT=1
+export DR_HOOK=0
+export DR_HOOK_IGNORE_SIGNALS=-1
+export MPIPROGINF="ON"
+export MPIDEBUG="ON"
+export MPISUSPEND="ON"
+export MPIEXPORT="EC_PROFILE_HEAP,F_PROGINF,F_FTRACE,F_RECLUNIT,F_SYSLEN,F_FMTBUF,F_SETBUF,F_SETBUF6,F_SETBUF0,F_ERRCNT,DR_HOOK,DR_HOOK_IGNORE_SIGNALS,MPIPROG
+INF,MPIDEBUG,MPISUSPEND"
+#==========================================
+export KMP_STACKSIZE=1G
+export KMP_MONITOR_STACKSIZE=1G
+ulimit -s unlimited
+export DR_HOOK_SILENT=1
+export DR_HOOK_OPT=prof
+export MPL_MBX_SIZE=2048000000
+export EC_MPI_ATEXIT=0
+export ECCODES_SAMPLES_PATH=//onm/dem/home/wchikhi/LIB/eccodes/share/eccodes/samples
+export ECCODES_DEFINITION_PATH=/onm/dem/home/wchikhi/LIB/eccodes/share/eccodes/definitions
+#=================== ENVIRONMENT ==================
+source /opt/ohpc/pub/intel/oneapi/setvars.sh
+export FI_PROVIDER=verbs
+export FI_VERBS_DEVICE_NAME=mlx4_0
+export FI_VERBS_IFACE=ib0
+#==================================================
+
+
+
+source $CONFIG_FILE
+echo $CONFIG_FILE
+echo "$OUT_CPL $tmpdir_e927" 
+
+echo $AA$MM$JJ
+
+#================== CREATE DIRECTORIES AND COOPY NEEDED FILES ========
+
+mkdir -p $OUT_CPL
+mkdir -p $tmpdir_e927
+cd $tmpdir_e927
+rm -f *
+
+ln -s $tmpdir_e927  $current_dir/tmp/tmp_e927
+
+sed "s/NBPROC/$NPROC/g" $namel_e927 > fort.4
+ln -s $EXECUTABLE MASTERODB
+
+#====== options d'optimisation a l'execution ========
+export ZOPT=""
+CYCLE=46
+NCONF=001
+VERSION=meteo
+CNMEXP='FPOS'
+NSTOP=t0
+TSTEP=1800.
+ADVEC=eul
+MODEL=arpifs
+DOM='ALGE'
+LMPOFF='FALSE'
+LECHKEVO='FALSE'
+pref='ALGE'
+export CFPDOM=ALGE
+
+
+#### START COUPLING ===============
+
+for (( j=$start_ech; j<=$end_ech; j+=$step_ech ));
+do
+ i=$(printf "%04444d" $j)
+# COPY ICMSH 
+cp $INP_DATA/ICMSHALAD_${AA}${MM}${DD}00_${i}  ICMSH${CNMEXP}INIT 
+
+## COPY CLIMS 
+cp  $clim_model_bigger                       Const.Clim
+cp  $clim_model_config                       const.clim.ALGE 
+# exécution
+
+$execution_bin  -genv I_MPI_DEBUG=1000 ./MASTERODB    > lola 1>&2
+
+mv  PFFPOSALGE+0000 $OUT_CPL/COUPLAGE_AROME_${i}
+done
+
+#      ***************
+#      *  Listing    *
+#      ***************
+if [ -a NODE.001_01 ] ; then
+  for file in NODE* ; do
+    \cat $file
+  done
+fi

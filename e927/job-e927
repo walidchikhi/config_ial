@@ -1,0 +1,185 @@
+#!/bin/bash
+#SBATCH --partition=Researches
+#SBATCH --job-name="AROME-E001"
+#SBATCH -n 128
+#SBATCH -c 1
+#SBATCH -N 8     
+#SBATCH -t 08:00:00
+#SBATCH --exclusive
+#SBATCH --verbose
+#SBATCH --output=stdout
+#SBATCH --error=stderr
+# -N : nombre de noeuds
+# -n : nombre TOTAL de taches MPI
+# -c : nombre de threads (OMP)
+echo "@@ `date`"
+
+
+. ~/.bashrc
+MPI_TASKS=$SLURM_NTASKS
+NPROC=$MPI_TASKS
+
+MPITASKS_PER_NODE=$((SLURM_NTASKS/SLURM_JOB_NUM_NODES))
+
+# ========================================= DZ
+export EC_PROFILE_HEAP=0
+
+#=======BEGIN FABRIC============= 
+#export I_MPI_DEBUG=100
+#=======END FABRIC===============
+
+export F_PROGINF=DETAIL
+export F_FTRACE=FMT2
+export F_RECLUNIT=BYTE
+export F_SYSLEN=1024
+export F_FMTBUF=131072
+export F_SETBUF=32768
+export F_SETBUF6=0
+export F_SETBUF0=0
+export F_ERRCNT=1
+export DR_HOOK=0
+export DR_HOOK_IGNORE_SIGNALS=-1
+export MPIPROGINF="ON"
+export MPIDEBUG="ON"
+export MPISUSPEND="ON"
+
+export MPIEXPORT="EC_PROFILE_HEAP,F_PROGINF,F_FTRACE,F_RECLUNIT,F_SYSLEN,F_FMTBUF,F_SETBUF,F_SETBUF6,F_SETBUF0,F_ERRCNT,DR_HOOK,DR_HOOK_IGNORE_SIGNALS,MPIPROG
+INF,MPIDEBUG,MPISUSPEND"
+
+#==========================================
+
+
+echo NNODES=$NNODES
+echo MPITASKS_PER_NODE=$MPITASKS_PER_NODE
+echo MPI_TASKS=$MPI_TASKS
+echo OMP_NUM_THREADS=$OMP_NUM_THREADS
+export KMP_STACKSIZE=1G
+export KMP_MONITOR_STACKSIZE=1G
+ulimit -s unlimited
+export DR_HOOK_SILENT=1
+export DR_HOOK_OPT=prof
+export MPL_MBX_SIZE=2048000000
+export EC_MPI_ATEXIT=0
+#export GRIB_SAMPLES_PATH=/shared/tools/12.20/grib_api/share/grib_api/samples
+#export LD_LIBRARY_PATH=/shared/tools/12.20/lib:/shared/tools/12.20/lib64:/opt/ohpc/pub/compiler/gcc/9.3.0/lib64
+export ECCODES_SAMPLES_PATH=//onm/dem/home/wchikhi/LIB/eccodes/share/eccodes/samples
+export ECCODES_DEFINITION_PATH=/onm/dem/home/wchikhi/LIB/eccodes/share/eccodes/definitions
+
+#=================== ENVIRONMENT ==================
+
+#source /onm/dit/home/ibelabbaci/oneapi.sh
+#source /shared/composer_xe_2019.update4
+#source /onm/dit/home/ibelabbaci/intel/oneapi/setvars.sh
+source /opt/ohpc/pub/intel/oneapi/setvars.sh
+
+export FI_PROVIDER=verbs
+#export FI_PROVIDER=tcp
+#export FI_PROVIDER=verbs
+#export I_MPI_FALLBACK=0
+#export I_MPI_HYDRA_DEBUG=on
+#export FI_LOG_LEVEL=debug
+#export FI_LOG_PROV=
+#export FI_LOG_SUBSYS=
+
+export FI_VERBS_DEVICE_NAME=mlx4_0
+export FI_VERBS_IFACE=ib0
+
+
+#==================================================
+
+
+#MM=$(date +"%m")
+#MM=05
+#DD=01
+#AA=2022
+
+rr=00
+DATE=`cat /onm/dem/home/wchikhi/majoper/arome/date`
+AA=`echo $DATE |cut -c1-4`
+MM=`echo $DATE |cut -c5-6`
+DD=`echo $DATE |cut -c7-8`
+#echo "Journée du : "$MM-$JJ-$AA" JobID Forecast : " ${SLURM_JOB_ID} >> $HOME/onm/dem/home/wchikhi/exp/AROME/jobs.txt
+echo $AA$MM$JJ
+
+echo "START e927 de  la journée du : ${AA}${MM}${DD} de  AROME CY46 2.5 - 90 NIV À : "  $(date +"%T") >> ${HOME}/majoper/arome/benchmark/execu_time
+
+mkdir -p /onm/dem/home/wchikhi/output/majoper/AROME/CPL/${DD}${MM}${AA}
+tmpdir="${HOME}/tmp/AROME/AROM-E927-${DD}${MM}${AA}"
+mkdir -p $tmpdir
+cd $tmpdir
+rm -f *
+ln -s /onm/dem/home/wchikhi/output/majoper/AROME/CPL/${DD}${MM}${AA} ~/majoper/arome/e927/cpl 
+
+echo "lls /onm/dem/home/wchikhi/output/majoper/AROME/CPL/${DD}${MM}${AA}" > ~/majoper/arome/e927/coup.sh
+chmod +x ~/majoper/arome/e927/coup.sh 
+
+# options d'optimisation a l'execution.
+export ZOPT=""
+date
+CYCLE=46
+NCONF=001
+VERSION=meteo
+CNMEXP='FPOS'
+NSTOP=t0
+TSTEP=1800.
+ADVEC=eul
+MODEL=arpifs
+DOM='ALGE'
+LMPOFF='FALSE'
+LECHKEVO='FALSE'
+pref='ALGE'
+export CFPDOM=ALGE
+
+
+#echo ${SLURM_JOB_ID} > /onm/dem/home/wchikhi/exp/AROME/jobid.txt
+
+
+ln -sf /onm/dem/home/wchikhi/pack/46t1_bf03.01.INTEL.x/bin/MASTERODB . 
+
+sed "s/NBPROC/$NPROC/g" /onm/dem/home/wchikhi/majoper/arome/e927/namel_e927_cy46 >fort.4
+
+#for i in {0000..0048..0001}
+for i in {0000..0024..0001}
+do
+echo "ICMSHALAD+${i}" > ech
+#       j=$((i*3))
+#       i=$(printf "%04d" $i)
+#       j=$(printf "%04d" $j)
+echo "ICMSHALAD+${i}" >> ech
+#cp  /onm/dem/home/nkerroumi/output/ALADIN/ICMSH/${DD}${MM}${AA}/ICMSHALAD+${i}  ICMSH${CNMEXP}INIT
+
+cp /onm/dem/home/wchikhi/majoper/ICMSH_ALADIN/ICMSHALAD_2022${MM}${DD}00_${i} ICMSH${CNMEXP}INIT 
+
+#cp /fennecData/data/chprod/ALADIN/FORECAST/${AA}/${MM}/${DD}/r00/ICMSHALAD_2022${MM}${DD}00_${i} ICMSH${CNMEXP}INIT
+
+#cp  /onm/dem/home/wchikhi/majoper/clim/aladin/ALADIN_model_m${MM}   Const.Clim
+cp  /onm/dem/home/wchikhi/exp/aladin/ALADIN_model_6km_m${MM}   Const.Clim
+
+
+#cp  /onm/dem/home/wchikhi/exp/arome/Const.Clim.${MM}  const.clim.ALGE
+cp /onm/dem/home/wchikhi/majoper/clim/arome/AROME_model_m${MM} const.clim.ALGE 
+# exécution
+
+/opt/ohpc/pub/intel/oneapi/mpi/latest/bin/mpirun   -genv I_MPI_DEBUG=1000 ./MASTERODB    > lola 1  #>&2
+
+mv  PFFPOSALGE+0000 /onm/dem/home/wchikhi/output/majoper/AROME/CPL/${DD}${MM}${AA}/COUPLAGE_AROME_${i}
+done
+
+#      ***************
+#      *  Listing    *
+#      ***************
+if [ -a NODE.001_01 ] ; then
+  for file in NODE* ; do
+    \cat $file
+        ############################################# < LOG > #################################################
+        echo "   Listing "$file >>${HOME}/onm/RUN/LOGS/journal-chaine-du-$(date +"%d-%m-%Y")
+        ############################################# < LOG > #################################################
+  done
+fi
+
+        ############################################# < LOG > #################################################
+        echo "   " >>${HOME}/exp/LOGS/journal-chaine-du-$(date +"%d-%m-%Y")
+        echo "   Génération des ICMSH" >>${HOME}/onm/RUN/LOGS/journal-chaine-du-$(date +"%d-%m-%Y")
+        ############################################# < LOG > #################################################
+echo "END e927 de  la journée du : ${AA}${MM}${DD} de  AROME CY46 2.5 - 90 NIV À : "  $(date +"%T") >> ${HOME}/majoper/arome/benchmark/execu_time
+

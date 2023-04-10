@@ -1,0 +1,54 @@
+ &NAM_SURF_ATM
+
+   XRIMAX=0.2,
+
+ /
+
+ &NAM_ISBAn
+
+   CROUGH="NONE",
+
+ /
+
+ &NAM_SSOn
+
+   CROUGH="Z01D",
+
+   XFRACZ0=10.,
+
+ /
+
+ &NAM_DIAG_SURFn
+
+   LSURF_BUDGET=.TRUE.,
+
+   N2M=1,
+
+ /
+
+ &NAM_DIAG_ISBAn
+
+   LPGD=.TRUE.,
+
+   LSURF_MISC_BUDGET=.TRUE.,
+
+ /
+
+ &NAM_WRITE_SURF_ATM
+
+   LNOWRITE_TEXFILE=.TRUE.,
+
+ /
+
+ &NAM_SEAFLUXn
+
+   CSEA_FLUX='ECUME',
+
+   LPWG=.FALSE.,
+
+   LPRECIP=.FALSE.,
+
+   LPWEBB=.FALSE.,
+
+ /
+~                                          

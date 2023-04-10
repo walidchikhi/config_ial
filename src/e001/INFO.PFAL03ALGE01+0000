@@ -1,0 +1,888 @@
+ *******************************************************
+ *******************************************************
+          INFO CADRE FICHIER : tmp/PFAL03ALGE01+0000                                                           
+ *******************************************************
+ *******************************************************
+                                                        
+                                                        
+ *******************************************************
+ *      PARAMETRES de SORTIE de la procedure FACIES    *
+ *******************************************************
+                                                        
+   1 - KTYPTR - Negative  Trunc              : NMSMAX :  11
+   2 - PSLAPO - Beta angle                   : EBETA  :   0.000000000000000
+   3 - PCLOPO - Without meaning for LAM               : 
+   4 - PSLOPO - Without meaning for LAM               : 
+   5 - PCODIL - LMAP (true is 1,false is -1) : ZCODIL :   0.000000000000000
+   6 - KTRONC - Truncation                   : NSMAX  :  11
+   7 - KNLATI - Points in y                  : NDGL   :  481
+   8 - KNXLON - Points in x                  : NDLON  :  481
+                                                        
+     - KNLOPA - Tableau de 8 valeurs                    
+ -------------------------------------------------------
+   9 -  ( 1)  - Packing param.               : MS     :  10
+  10 -  ( 2)  - Size of Domain               : KDOM   :  0
+  11 -  ( 3)  - First index in x             : NDLUN  :  1
+  12 -  ( 4)  - Last index in x              : NDLUX  :  481
+  13 -  ( 5)  - First index in y             : NDGUN  :  1
+  14 -  ( 6)  - Last index in y              : NDGUX  :  481
+  15 -  ( 7)  - Size/2 of I zone in x        : NBZONL :  8
+  16 -  ( 8)  - Size/2 of I zone in y        : NBZONG :  8
+ -------------------------------------------------------
+                                                        
+     - KNOZPA - Tableau sans interet; valeurs nulles    
+ -------------------------------------------------------
+ -------------------------------------------------------
+                                                        
+     - PSINLA - Tableau d appel a EGGX; 18 valeurs      
+        ( geographical Lat-Lon values in : Deg ) 
+ -------------------------------------------------------
+  17 -  ( 1)  - EGGX parameter               : NROTEQ :  -1
+  18 -  ( 2)  - EGGX parameter               : ERPK   :  -9.000000000000000
+  19 -  ( 3)  - EGGX parameter               : ELON0  :   0.000000000000000
+  20 -  ( 4)  - EGGX parameter               : ELAT0  :   0.000000000000000
+  21 -  ( 5)  - EGGX parameter               : ELONC  :   3.000000000000000
+  22 -  ( 6)  - EGGX parameter               : ELATC  :  34.000000000000000
+  23 -  ( 7)  - EGGX parameter               : EDELX  :  0.0004363323129985824
+  24 -  ( 8)  - EGGX parameter               : EDELY  :  0.0004363323129985824
+  25 -  ( 9)  - EGGX parameter               : ELX    :  12.025
+  26 -  (10)  - EGGX parameter               : ELY    :  12.025
+  27 -  (11)  - EGGX parameter               : EXWN   :  0.
+  28 -  (12)  - EGGX parameter               : EYWN   :  0.
+  29 -  (13)  - EGGX parameter               : ELON1  :  -3.000000000000000
+  30 -  (14)  - EGGX parameter               : ELAT1  :  28.000000000000000
+  31 -  (15)  - EGGX parameter               : ELON2  :   9.000000000000000
+  32 -  (16)  - EGGX parameter               : ELAT2  :  40.000000000000000
+ -------------------------------------------------------
+                                                        
+  35 - KNIVER - Nombre de niveaux                     :  90
+  36 - PREFER - Pression de reference                 :  101325.
+                                                        
+                                                        
+  38 - PAHYBR - Tableau A des coordonnees hybrides      
+ -------------------------------------------------------
+ 0.0000000000000000 <- Level  1 -> 0.0268273558253146
+ 0.0268273558253146 <- Level  2 -> 0.0369808960375031
+ 0.0369808960375031 <- Level  3 -> 0.0485130733777449
+ 0.0485130733777449 <- Level  4 -> 0.0610375470614360
+ 0.0610375470614360 <- Level  5 -> 0.0741359641450777
+ 0.0741359641450777 <- Level  6 -> 0.0875312247125586
+ 0.0875312247125586 <- Level  7 -> 0.0989914074117937
+ 0.0989914074117937 <- Level  8 -> 0.1083804871058475
+ 0.1083804871058475 <- Level  9 -> 0.1163132628571429
+ 0.1163132628571429 <- Level 10 -> 0.1230408624525043
+ 0.1230408624525043 <- Level 11 -> 0.1286651527263755
+ 0.1286651527263755 <- Level 12 -> 0.1332793977202072
+ 0.1332793977202072 <- Level 13 -> 0.1369715168221071
+ 0.1369715168221071 <- Level 14 -> 0.1398220353515914
+ 0.1398220353515914 <- Level 15 -> 0.1419014536688872
+ 0.1419014536688872 <- Level 16 -> 0.1432679471699975
+ 0.1432679471699975 <- Level 17 -> 0.1439660335060449
+ 0.1439660335060449 <- Level 18 -> 0.1440489051369356
+ 0.1440489051369356 <- Level 19 -> 0.1435647325043178
+ 0.1435647325043178 <- Level 20 -> 0.1425572495830249
+ 0.1425572495830249 <- Level 21 -> 0.1410675847224278
+ 0.1410675847224278 <- Level 22 -> 0.1391363172464841
+ 0.1391363172464841 <- Level 23 -> 0.1368056294695287
+ 0.1368056294695287 <- Level 24 -> 0.1341214237058969
+ 0.1341214237058969 <- Level 25 -> 0.1311352737034296
+ 0.1311352737034296 <- Level 26 -> 0.1279060831088083
+ 0.1279060831088083 <- Level 27 -> 0.1244732465827782
+ 0.1244732465827782 <- Level 28 -> 0.1208713316062176
+ 0.1208713316062176 <- Level 29 -> 0.1171304795460153
+ 0.1171304795460153 <- Level 30 -> 0.1132768704663212
+ 0.1132768704663212 <- Level 31 -> 0.1093332222649889
+ 0.1093332222649889 <- Level 32 -> 0.1053193010905502
+ 0.1053193010905502 <- Level 33 -> 0.1012524244164816
+ 0.1012524244164816 <- Level 34 -> 0.0971479433802122
+ 0.0971479433802122 <- Level 35 -> 0.0930196936787565
+ 0.0930196936787565 <- Level 36 -> 0.0888804075993092
+ 0.0888804075993092 <- Level 37 -> 0.0847420813915618
+ 0.0847420813915618 <- Level 38 -> 0.0806187573550456
+ 0.0806187573550456 <- Level 39 -> 0.0765236678707130
+ 0.0765236678707130 <- Level 40 -> 0.0724693275006168
+ 0.0724693275006168 <- Level 41 -> 0.0684676099679250
+ 0.0684676099679250 <- Level 42 -> 0.0645298102245250
+ 0.0645298102245250 <- Level 43 -> 0.0606666905995559
+ 0.0606666905995559 <- Level 44 -> 0.0568885107031828
+ 0.0568885107031828 <- Level 45 -> 0.0532050410856156
+ 0.0532050410856156 <- Level 46 -> 0.0496255611547002
+ 0.0496255611547002 <- Level 47 -> 0.0461588421416235
+ 0.0461588421416235 <- Level 48 -> 0.0428131163089070
+ 0.0428131163089070 <- Level 49 -> 0.0395960348679990
+ 0.0395960348679990 <- Level 50 -> 0.0365146141820873
+ 0.0365146141820873 <- Level 51 -> 0.0335751763927955
+ 0.0335751763927955 <- Level 52 -> 0.0307822119812485
+ 0.0307822119812485 <- Level 53 -> 0.0281385762546262
+ 0.0281385762546262 <- Level 54 -> 0.0256455724352332
+ 0.0256455724352332 <- Level 55 -> 0.0233030563631878
+ 0.0233030563631878 <- Level 56 -> 0.0211095587169998
+ 0.0211095587169998 <- Level 57 -> 0.0190624207549963
+ 0.0190624207549963 <- Level 58 -> 0.0171579394621268
+ 0.0171579394621268 <- Level 59 -> 0.0153915184900074
+ 0.0153915184900074 <- Level 60 -> 0.0137578212681964
+ 0.0137578212681964 <- Level 61 -> 0.0122509241549470
+ 0.0122509241549470 <- Level 62 -> 0.0108644649592894
+ 0.0108644649592894 <- Level 63 -> 0.0095917879299284
+ 0.0095917879299284 <- Level 64 -> 0.0084260814211695
+ 0.0084260814211695 <- Level 65 -> 0.0073634987515421
+ 0.0073634987515421 <- Level 66 -> 0.0063996673377745
+ 0.0063996673377745 <- Level 67 -> 0.0055297827683198
+ 0.0055297827683198 <- Level 68 -> 0.0047487025117197
+ 0.0047487025117197 <- Level 69 -> 0.0040510375425611
+ 0.0040510375425611 <- Level 70 -> 0.0034312405132001
+ 0.0034312405132001 <- Level 71 -> 0.0028836892277325
+ 0.0028836892277325 <- Level 72 -> 0.0024027643523316
+ 0.0024027643523316 <- Level 73 -> 0.0019829205132001
+ 0.0019829205132001 <- Level 74 -> 0.0016187503577597
+ 0.0016187503577597 <- Level 75 -> 0.0013050409079694
+ 0.0013050409079694 <- Level 76 -> 0.0010368226005428
+ 0.0010368226005428 <- Level 77 -> 0.0008094102738712
+ 0.0008094102738712 <- Level 78 -> 0.0006192433456699
+ 0.0006192433456699 <- Level 79 -> 0.0004627260202319
+ 0.0004627260202319 <- Level 80 -> 0.0003362596989884
+ 0.0003362596989884 <- Level 81 -> 0.0002362767234148
+ 0.0002362767234148 <- Level 82 -> 0.0001592749765606
+ 0.0001592749765606 <- Level 83 -> 0.0001018534616334
+ 0.0001018534616334 <- Level 84 -> 0.0000607484431285
+ 0.0000607484431285 <- Level 85 -> 0.0000328702294597
+ 0.0000328702294597 <- Level 86 -> 0.0000153402121885
+ 0.0000153402121885 <- Level 87 -> 0.0000055280532939
+ 0.0000055280532939 <- Level 88 -> 0.0000010888527017
+ 0.0000010888527017 <- Level 89 -> 0.0000000000000000
+ 0.0000000000000000 <- Level 90 -> 0.0000000000000000
+ -------------------------------------------------------
+                                                        
+  39 - PBHYBR - Tableau B des coordonnees hybrides      
+ -------------------------------------------------------
+ -------------------------------------------------------
+ 0.0000000000000000 <- Level  1 -> 0.0000000000000000
+ 0.0000000000000000 <- Level  2 -> 0.0000000000000000
+ 0.0000000000000000 <- Level  3 -> 0.0000000000000000
+ 0.0000000000000000 <- Level  4 -> 0.0000000000000000
+ 0.0000000000000000 <- Level  5 -> 0.0000000000000000
+ 0.0000000000000000 <- Level  6 -> 0.0000000000000000
+ 0.0000000000000000 <- Level  7 -> 0.0020808742000000
+ 0.0020808742000000 <- Level  8 -> 0.0063342307000000
+ 0.0063342307000000 <- Level  9 -> 0.0121732181000000
+ 0.0121732181000000 <- Level 10 -> 0.0193986154000000
+ 0.0193986154000000 <- Level 11 -> 0.0278371306000000
+ 0.0278371306000000 <- Level 12 -> 0.0373529653000000
+ 0.0373529653000000 <- Level 13 -> 0.0478429390000000
+ 0.0478429390000000 <- Level 14 -> 0.0592352126000000
+ 0.0592352126000000 <- Level 15 -> 0.0714873482000000
+ 0.0714873482000000 <- Level 16 -> 0.0845746582000000
+ 0.0845746582000000 <- Level 17 -> 0.0983741718000000
+ 0.0983741718000000 <- Level 18 -> 0.1128383503000000
+ 0.1128383503000000 <- Level 19 -> 0.1279315334000000
+ 0.1279315334000000 <- Level 20 -> 0.1436185400000000
+ 0.1436185400000000 <- Level 21 -> 0.1598595007000000
+ 0.1598595007000000 <- Level 22 -> 0.1766044735000000
+ 0.1766044735000000 <- Level 23 -> 0.1937879788000000
+ 0.1937879788000000 <- Level 24 -> 0.2113235966000000
+ 0.2113235966000000 <- Level 25 -> 0.2290987842000000
+ 0.2290987842000000 <- Level 26 -> 0.2469701004000000
+ 0.2469701004000000 <- Level 27 -> 0.2649022016000000
+ 0.2649022016000000 <- Level 28 -> 0.2828675957000000
+ 0.2828675957000000 <- Level 29 -> 0.3008456607000000
+ 0.3008456607000000 <- Level 30 -> 0.3188216081000000
+ 0.3188216081000000 <- Level 31 -> 0.3367854211000000
+ 0.3367854211000000 <- Level 32 -> 0.3547307961000000
+ 0.3547307961000000 <- Level 33 -> 0.3726541060000000
+ 0.3726541060000000 <- Level 34 -> 0.3905533994000000
+ 0.3905533994000000 <- Level 35 -> 0.4084274461000000
+ 0.4084274461000000 <- Level 36 -> 0.4262748343000000
+ 0.4262748343000000 <- Level 37 -> 0.4440931265000000
+ 0.4440931265000000 <- Level 38 -> 0.4618674416000000
+ 0.4618674416000000 <- Level 39 -> 0.4795830255000000
+ 0.4795830255000000 <- Level 40 -> 0.4972249800000000
+ 0.4972249800000000 <- Level 41 -> 0.5147780123000000
+ 0.5147780123000000 <- Level 42 -> 0.5322262004000000
+ 0.5322262004000000 <- Level 43 -> 0.5495527773000000
+ 0.5495527773000000 <- Level 44 -> 0.5667399335000000
+ 0.5667399335000000 <- Level 45 -> 0.5837686388000000
+ 0.5837686388000000 <- Level 46 -> 0.6006184839000001
+ 0.6006184839000001 <- Level 47 -> 0.6172675404000000
+ 0.6172675404000000 <- Level 48 -> 0.6336922407000000
+ 0.6336922407000000 <- Level 49 -> 0.6498672716000000
+ 0.6498672716000000 <- Level 50 -> 0.6657654933000000
+ 0.6657654933000000 <- Level 51 -> 0.6813578657000000
+ 0.6813578657000000 <- Level 52 -> 0.6966193450000000
+ 0.6966193450000000 <- Level 53 -> 0.7115283190000000
+ 0.7115283190000000 <- Level 54 -> 0.7260667007000000
+ 0.7260667007000000 <- Level 55 -> 0.7402199922000000
+ 0.7402199922000000 <- Level 56 -> 0.7539773233000000
+ 0.7539773233000000 <- Level 57 -> 0.7673314668000000
+ 0.7673314668000000 <- Level 58 -> 0.7802788340000000
+ 0.7802788340000000 <- Level 59 -> 0.7928194542000000
+ 0.7928194542000000 <- Level 60 -> 0.8049569410000000
+ 0.8049569410000000 <- Level 61 -> 0.8166984434000000
+ 0.8166984434000000 <- Level 62 -> 0.8280546004000000
+ 0.8280546004000000 <- Level 63 -> 0.8390394770000000
+ 0.8390394770000000 <- Level 64 -> 0.8496705050000000
+ 0.8496705050000000 <- Level 65 -> 0.8599386315999999
+ 0.8599386315999999 <- Level 66 -> 0.8698369440000000
+ 0.8698369440000000 <- Level 67 -> 0.8793606591999999
+ 0.8793606591999999 <- Level 68 -> 0.8885071083000000
+ 0.8885071083000000 <- Level 69 -> 0.8972757162000000
+ 0.8972757162000000 <- Level 70 -> 0.9056679778000000
+ 0.9056679778000000 <- Level 71 -> 0.9136874321000000
+ 0.9136874321000000 <- Level 72 -> 0.9213396337999999
+ 0.9213396337999999 <- Level 73 -> 0.9286321259000000
+ 0.9286321259000000 <- Level 74 -> 0.9355744104000000
+ 0.9355744104000000 <- Level 75 -> 0.9421779224000000
+ 0.9421779224000000 <- Level 76 -> 0.9484559990000000
+ 0.9484559990000000 <- Level 77 -> 0.9544238611000000
+ 0.9544238611000000 <- Level 78 -> 0.9600729770000000
+ 0.9600729770000000 <- Level 79 -> 0.9653949126000000
+ 0.9653949126000000 <- Level 80 -> 0.9703813221000001
+ 0.9703813221000001 <- Level 81 -> 0.9750239392000000
+ 0.9750239392000000 <- Level 82 -> 0.9793145669000000
+ 0.9793145669000000 <- Level 83 -> 0.9832450676000000
+ 0.9832450676000000 <- Level 84 -> 0.9868073535000000
+ 0.9868073535000000 <- Level 85 -> 0.9899933762000001
+ 0.9899933762000001 <- Level 86 -> 0.9927951169000000
+ 0.9927951169000000 <- Level 87 -> 0.9952045769000000
+ 0.9952045769000000 <- Level 88 -> 0.9972137692000000
+ 0.9972137692000000 <- Level 89 -> 0.9988147073000000
+ 0.9988147073000000 <- Level 90 -> 1.0000000000000000
+                                                        
+                                                        
+ *******************************************************
+ *      PARAMETRES de SORTIE de la procedure FADIES    *
+ *******************************************************
+                                                        
+     - KDATEF - Tableau date                            
+ -------------------------------------------------------
+ 101 -  ( 1)  - Annee    ( du reseau de depart )      :  2022
+ 102 -  ( 2)  - Mois     ( du reseau de depart )      :  2
+ 103 -  ( 3)  - Jour     ( du reseau de depart )      :  1
+ 104 -  ( 4)  - Heure    ( du reseau de depart )      :  0
+ 105 -  ( 5)  - Minute   ( du reseau de depart )      :  0
+ 106 -  ( 6)  - Indicateur d unite d echeance         :  1
+ 107 -  ( 7)  - Caracteristiques echeance             :  0
+ 108 -  ( 8)  - Caracteristiques echeance             :  0
+ 109 -  ( 9)  - Caracteristiques echeance             :  1
+ 110 -  (10)  - Valeur pour les moyennes ou cumuls    :  0
+ 111 -  (11)  - Valeur pour les moyennes ou cumuls    :  0
+ -------------------------------------------------------
+                                                        
+                                                        
+ *******************************************************
+ *      PARAMETRES de SORTIE de la procedure FALSIF    *
+ *******************************************************
+                                                        
+ 201 - CDIDEN - Identificateur                        : FULLPOS                                                                         
+                                                        
+ *******************************************************
+ *      PARAMETRES de SORTIE de la procedure LFICAS    *
+ *******************************************************
+                                                        
+ 301 - Nombre de Champs de donnees                    :  603
+                                                        
+  Champs presents :    Taille :    Position :    Spec : 
+ -------------------------------------------------------
+ DATX-DES-DONNEES          11          9473       F
+ SURFTEMPERATURE            5          9484       F
+ INTSURFGEOPOTENT           5          9489       F
+ SURFRESERV.NEIGE           5          9494       F
+ SURFTENS.TURB.ZO           5          9499       F
+ SURFTENS.TURB.ME           5          9504       F
+ SURFACCPLUIE               5          9509       F
+ SURFACCNEIGE               5          9514       F
+ SURFACCGRAUPEL             5          9519       F
+ SOMMFLU.RAY.SOLA           5          9524       F
+ SURFFLU.RAY.SOLA           5          9529       F
+ SOMMFLU.RAY.THER           5          9534       F
+ SURFFLU.RAY.THER           5          9539       F
+ SURFFLU.LAT.MEVA           5          9544       F
+ SURFFLU.LAT.MSUB           5          9549       F
+ SURFFLU.MEVAP.EA           5          9554       F
+ SURFFLU.MSUBL.NE           5          9559       F
+ SURFFLU.CHA.SENS           5          9564       F
+ SURFRAYT SOLA DE           5          9569       F
+ SURFRAYT THER DE           5          9574       F
+ SURFRAYT SOL CL            5          9579       F
+ SURFRAYT THER CL           5          9584       F
+ CLSTEMPERATURE             5          9589       F
+ CLSHUMI.RELATIVE           5          9594       F
+ CLSVENT.ZONAL              5          9599       F
+ CLSVENT.MERIDIEN           5          9604       F
+ SURFNEBUL.TOTALE           5          9609       F
+ SURFNEBUL.CONVEC           5          9614       F
+ SURFNEBUL.HAUTE            5          9619       F
+ SURFNEBUL.MOYENN           5          9624       F
+ SURFNEBUL.BASSE            5          9629       F
+ CLSU.RAF.MOD.XFU           5          9634       F
+ CLSV.RAF.MOD.XFU           5          9639       F
+ CLSMAXI.TEMPERAT           5          9644       F
+ CLSMINI.TEMPERAT           5          9649       F
+ CLSVISIN_60                5          9654       F
+ CLSVISIHYDN60              5          9659       F
+ P10000VENT_ZONAL           5          9664       F
+ P15000VENT_ZONAL           5          9669       F
+ P20000VENT_ZONAL           5          9674       F
+ P25000VENT_ZONAL           5          9679       F
+ P30000VENT_ZONAL           5          9684       F
+ P40000VENT_ZONAL           5          9689       F
+ P50000VENT_ZONAL           5          9694       F
+ P60000VENT_ZONAL           5          9699       F
+ P70000VENT_ZONAL           5          9704       F
+ P80000VENT_ZONAL           5          9709       F
+ P85000VENT_ZONAL           5          9714       F
+ P90000VENT_ZONAL           5          9719       F
+ P92500VENT_ZONAL           5          9724       F
+ P95000VENT_ZONAL           5          9729       F
+ P00000VENT_ZONAL           5          9734       F
+ P10000VENT_MERID           5          9739       F
+ P15000VENT_MERID           5          9744       F
+ P20000VENT_MERID           5          9749       F
+ P25000VENT_MERID           5          9754       F
+ P30000VENT_MERID           5          9759       F
+ P40000VENT_MERID           5          9764       F
+ P50000VENT_MERID           5          9769       F
+ P60000VENT_MERID           5          9774       F
+ P70000VENT_MERID           5          9779       F
+ P80000VENT_MERID           5          9784       F
+ P85000VENT_MERID           5          9789       F
+ P90000VENT_MERID           5          9794       F
+ P92500VENT_MERID           5          9799       F
+ P95000VENT_MERID           5          9804       F
+ P00000VENT_MERID           5          9809       F
+ P10000TEMPERATUR           5          9814       F
+ P15000TEMPERATUR           5          9819       F
+ P20000TEMPERATUR           5          9824       F
+ P25000TEMPERATUR           5          9829       F
+ P30000TEMPERATUR           5          9834       F
+ P40000TEMPERATUR           5          9839       F
+ P50000TEMPERATUR           5          9844       F
+ P60000TEMPERATUR           5          9849       F
+ P70000TEMPERATUR           5          9854       F
+ P80000TEMPERATUR           5          9859       F
+ P85000TEMPERATUR           5          9864       F
+ P90000TEMPERATUR           5          9869       F
+ P92500TEMPERATUR           5          9874       F
+ P95000TEMPERATUR           5          9879       F
+ P00000TEMPERATUR           5          9884       F
+ P10000CLOUD_WATE           5          9889       F
+ P15000CLOUD_WATE           5          9894       F
+ P20000CLOUD_WATE           5          9899       F
+ P25000CLOUD_WATE           5          9904       F
+ P30000CLOUD_WATE           5          9909       F
+ P40000CLOUD_WATE           5          9914       F
+ P50000CLOUD_WATE           5          9919       F
+ P60000CLOUD_WATE           5          9924       F
+ P70000CLOUD_WATE           5          9929       F
+ P80000CLOUD_WATE           5          9934       F
+ P85000CLOUD_WATE           5          9939       F
+ P90000CLOUD_WATE           5          9944       F
+ P92500CLOUD_WATE           5          9949       F
+ P95000CLOUD_WATE           5          9954       F
+ P00000CLOUD_WATE           5          9959       F
+ P10000ICE_CRYSTA           5          9964       F
+ P15000ICE_CRYSTA           5          9969       F
+ P20000ICE_CRYSTA           5          9974       F
+ P25000ICE_CRYSTA           5          9979       F
+ P30000ICE_CRYSTA           5          9984       F
+ P40000ICE_CRYSTA           5          9989       F
+ P50000ICE_CRYSTA           5          9994       F
+ P60000ICE_CRYSTA           5          9999       F
+ P70000ICE_CRYSTA           5         10004       F
+ P80000ICE_CRYSTA           5         10009       F
+ P85000ICE_CRYSTA           5         10014       F
+ P90000ICE_CRYSTA           5         10019       F
+ P92500ICE_CRYSTA           5         10024       F
+ P95000ICE_CRYSTA           5         10029       F
+ P00000ICE_CRYSTA           5         10034       F
+ P10000CLOUD_FRAC           5         10039       F
+ P15000CLOUD_FRAC           5         10044       F
+ P20000CLOUD_FRAC           5         10049       F
+ P25000CLOUD_FRAC           5         10054       F
+ P30000CLOUD_FRAC           5         10059       F
+ P40000CLOUD_FRAC           5         10064       F
+ P50000CLOUD_FRAC           5         10069       F
+ P60000CLOUD_FRAC           5         10074       F
+ P70000CLOUD_FRAC           5         10079       F
+ P80000CLOUD_FRAC           5         10084       F
+ P85000CLOUD_FRAC           5         10089       F
+ P90000CLOUD_FRAC           5         10094       F
+ P92500CLOUD_FRAC           5         10099       F
+ P95000CLOUD_FRAC           5         10104       F
+ P00000CLOUD_FRAC           5         10109       F
+ P10000SNOW                 5         10114       F
+ P15000SNOW                 5         10119       F
+ P20000SNOW                 5         10124       F
+ P25000SNOW                 5         10129       F
+ P30000SNOW                 5         10134       F
+ P40000SNOW                 5         10139       F
+ P50000SNOW                 5         10144       F
+ P60000SNOW                 5         10149       F
+ P70000SNOW                 5         10154       F
+ P80000SNOW                 5         10159       F
+ P85000SNOW                 5         10164       F
+ P90000SNOW                 5         10169       F
+ P92500SNOW                 5         10174       F
+ P95000SNOW                 5         10179       F
+ P00000SNOW                 5         10184       F
+ P10000RAIN                 5         10189       F
+ P15000RAIN                 5         10194       F
+ P20000RAIN                 5         10199       F
+ P25000RAIN                 5         10204       F
+ P30000RAIN                 5         10209       F
+ P40000RAIN                 5         10214       F
+ P50000RAIN                 5         10219       F
+ P60000RAIN                 5         10224       F
+ P70000RAIN                 5         10229       F
+ P80000RAIN                 5         10234       F
+ P85000RAIN                 5         10239       F
+ P90000RAIN                 5         10244       F
+ P92500RAIN                 5         10249       F
+ P95000RAIN                 5         10254       F
+ P00000RAIN                 5         10259       F
+ P10000GRAUPEL              5         10264       F
+ P15000GRAUPEL              5         10269       F
+ P20000GRAUPEL              5         10274       F
+ P25000GRAUPEL              5         10279       F
+ P30000GRAUPEL              5         10284       F
+ P40000GRAUPEL              5         10289       F
+ P50000GRAUPEL              5         10294       F
+ P60000GRAUPEL              5         10299       F
+ P70000GRAUPEL              5         10304       F
+ P80000GRAUPEL              5         10309       F
+ P85000GRAUPEL              5         10314       F
+ P90000GRAUPEL              5         10319       F
+ P92500GRAUPEL              5         10324       F
+ P95000GRAUPEL              5         10329       F
+ P00000GRAUPEL              5         10334       F
+ P10000TKE                  5         10339       F
+ P15000TKE                  5         10344       F
+ P20000TKE                  5         10349       F
+ P25000TKE                  5         10354       F
+ P30000TKE                  5         10359       F
+ P40000TKE                  5         10364       F
+ P50000TKE                  5         10369       F
+ P60000TKE                  5         10374       F
+ P70000TKE                  5         10379       F
+ P80000TKE                  5         10384       F
+ P85000TKE                  5         10389       F
+ P90000TKE                  5         10394       F
+ P92500TKE                  5         10399       F
+ P95000TKE                  5         10404       F
+ P00000TKE                  5         10409       F
+ P10000GEOPOTENTI           5         10414       F
+ P15000GEOPOTENTI           5         10419       F
+ P20000GEOPOTENTI           5         10424       F
+ P25000GEOPOTENTI           5         10429       F
+ P30000GEOPOTENTI           5         10434       F
+ P40000GEOPOTENTI           5         10439       F
+ P50000GEOPOTENTI           5         10444       F
+ P60000GEOPOTENTI           5         10449       F
+ P70000GEOPOTENTI           5         10454       F
+ P80000GEOPOTENTI           5         10459       F
+ P85000GEOPOTENTI           5         10464       F
+ P90000GEOPOTENTI           5         10469       F
+ P92500GEOPOTENTI           5         10474       F
+ P95000GEOPOTENTI           5         10479       F
+ P00000GEOPOTENTI           5         10484       F
+ P10000HUMI_RELAT           5         10489       F
+ P15000HUMI_RELAT           5         10494       F
+ P20000HUMI_RELAT           5         10499       F
+ P25000HUMI_RELAT           5         10504       F
+ P30000HUMI_RELAT           5         10509       F
+ P40000HUMI_RELAT           5         10514       F
+ P50000HUMI_RELAT           5         10519       F
+ P60000HUMI_RELAT           5         10524       F
+ P70000HUMI_RELAT           5         10529       F
+ P80000HUMI_RELAT           5         10534       F
+ P85000HUMI_RELAT           5         10539       F
+ P90000HUMI_RELAT           5         10544       F
+ P92500HUMI_RELAT           5         10549       F
+ P95000HUMI_RELAT           5         10554       F
+ P00000HUMI_RELAT           5         10559       F
+ P10000TEMPE_POTE           5         10564       F
+ P15000TEMPE_POTE           5         10569       F
+ P20000TEMPE_POTE           5         10574       F
+ P25000TEMPE_POTE           5         10579       F
+ P30000TEMPE_POTE           5         10584       F
+ P40000TEMPE_POTE           5         10589       F
+ P50000TEMPE_POTE           5         10594       F
+ P60000TEMPE_POTE           5         10599       F
+ P70000TEMPE_POTE           5         10604       F
+ P80000TEMPE_POTE           5         10609       F
+ P85000TEMPE_POTE           5         10614       F
+ P90000TEMPE_POTE           5         10619       F
+ P92500TEMPE_POTE           5         10624       F
+ P95000TEMPE_POTE           5         10629       F
+ P00000TEMPE_POTE           5         10634       F
+ P10000THETA_PRIM           5         10639       F
+ P15000THETA_PRIM           5         10644       F
+ P20000THETA_PRIM           5         10649       F
+ P25000THETA_PRIM           5         10654       F
+ P30000THETA_PRIM           5         10659       F
+ P40000THETA_PRIM           5         10664       F
+ P50000THETA_PRIM           5         10669       F
+ P60000THETA_PRIM           5         10674       F
+ P70000THETA_PRIM           5         10679       F
+ P80000THETA_PRIM           5         10684       F
+ P85000THETA_PRIM           5         10689       F
+ P90000THETA_PRIM           5         10694       F
+ P92500THETA_PRIM           5         10699       F
+ P95000THETA_PRIM           5         10704       F
+ P00000THETA_PRIM           5         10709       F
+ P10000SIM_REFLEC           5         10714       F
+ P15000SIM_REFLEC           5         10719       F
+ P20000SIM_REFLEC           5         10724       F
+ P25000SIM_REFLEC           5         10729       F
+ P30000SIM_REFLEC           5         10734       F
+ P40000SIM_REFLEC           5         10739       F
+ P50000SIM_REFLEC           5         10744       F
+ P60000SIM_REFLEC           5         10749       F
+ P70000SIM_REFLEC           5         10754       F
+ P80000SIM_REFLEC           5         10759       F
+ P85000SIM_REFLEC           5         10764       F
+ P90000SIM_REFLEC           5         10769       F
+ P92500SIM_REFLEC           5         10774       F
+ P95000SIM_REFLEC           5         10779       F
+ P00000SIM_REFLEC           5         10784       F
+ P10000THETA_VIRT           5         10789       F
+ P15000THETA_VIRT           5         10794       F
+ P20000THETA_VIRT           5         10799       F
+ P25000THETA_VIRT           5         10804       F
+ P30000THETA_VIRT           5         10809       F
+ P40000THETA_VIRT           5         10814       F
+ P50000THETA_VIRT           5         10819       F
+ P60000THETA_VIRT           5         10824       F
+ P70000THETA_VIRT           5         10829       F
+ P80000THETA_VIRT           5         10834       F
+ P85000THETA_VIRT           5         10839       F
+ P90000THETA_VIRT           5         10844       F
+ P92500THETA_VIRT           5         10849       F
+ P95000THETA_VIRT           5         10854       F
+ P00000THETA_VIRT           5         10859       F
+ P10000VERT.VELOC           5         10864       F
+ P15000VERT.VELOC           5         10869       F
+ P20000VERT.VELOC           5         10874       F
+ P25000VERT.VELOC           5         10879       F
+ P30000VERT.VELOC           5         10884       F
+ P40000VERT.VELOC           5         10889       F
+ P50000VERT.VELOC           5         10894       F
+ P60000VERT.VELOC           5         10899       F
+ P70000VERT.VELOC           5         10904       F
+ P80000VERT.VELOC           5         10909       F
+ P85000VERT.VELOC           5         10914       F
+ P90000VERT.VELOC           5         10919       F
+ P92500VERT.VELOC           5         10924       F
+ P95000VERT.VELOC           5         10929       F
+ P00000VERT.VELOC           5         10934       F
+ P10000POT_VORTIC           5         10939       F
+ P15000POT_VORTIC           5         10944       F
+ P20000POT_VORTIC           5         10949       F
+ P25000POT_VORTIC           5         10954       F
+ P30000POT_VORTIC           5         10959       F
+ P40000POT_VORTIC           5         10964       F
+ P50000POT_VORTIC           5         10969       F
+ P60000POT_VORTIC           5         10974       F
+ P70000POT_VORTIC           5         10979       F
+ P80000POT_VORTIC           5         10984       F
+ P85000POT_VORTIC           5         10989       F
+ P90000POT_VORTIC           5         10994       F
+ P92500POT_VORTIC           5         10999       F
+ P95000POT_VORTIC           5         11004       F
+ P00000POT_VORTIC           5         11009       F
+ P10000VITESSE_VE           5         11014       F
+ P15000VITESSE_VE           5         11019       F
+ P20000VITESSE_VE           5         11024       F
+ P25000VITESSE_VE           5         11029       F
+ P30000VITESSE_VE           5         11034       F
+ P40000VITESSE_VE           5         11039       F
+ P50000VITESSE_VE           5         11044       F
+ P60000VITESSE_VE           5         11049       F
+ P70000VITESSE_VE           5         11054       F
+ P80000VITESSE_VE           5         11059       F
+ P85000VITESSE_VE           5         11064       F
+ P90000VITESSE_VE           5         11069       F
+ P92500VITESSE_VE           5         11074       F
+ P95000VITESSE_VE           5         11079       F
+ P00000VITESSE_VE           5         11084       F
+ P10000ABS_VORTIC           5         11089       F
+ P15000ABS_VORTIC           5         11094       F
+ P20000ABS_VORTIC           5         11099       F
+ P25000ABS_VORTIC           5         11104       F
+ P30000ABS_VORTIC           5         11109       F
+ P40000ABS_VORTIC           5         11114       F
+ P50000ABS_VORTIC           5         11119       F
+ P60000ABS_VORTIC           5         11124       F
+ P70000ABS_VORTIC           5         11129       F
+ P80000ABS_VORTIC           5         11134       F
+ P85000ABS_VORTIC           5         11139       F
+ P90000ABS_VORTIC           5         11144       F
+ P92500ABS_VORTIC           5         11149       F
+ P95000ABS_VORTIC           5         11154       F
+ P00000ABS_VORTIC           5         11159       F
+ P10000DIVERGENCE           5         11164       F
+ P15000DIVERGENCE           5         11169       F
+ P20000DIVERGENCE           5         11174       F
+ P25000DIVERGENCE           5         11179       F
+ P30000DIVERGENCE           5         11184       F
+ P40000DIVERGENCE           5         11189       F
+ P50000DIVERGENCE           5         11194       F
+ P60000DIVERGENCE           5         11199       F
+ P70000DIVERGENCE           5         11204       F
+ P80000DIVERGENCE           5         11209       F
+ P85000DIVERGENCE           5         11214       F
+ P90000DIVERGENCE           5         11219       F
+ P92500DIVERGENCE           5         11224       F
+ P95000DIVERGENCE           5         11229       F
+ P00000DIVERGENCE           5         11234       F
+ MSLPRESSURE                5         11239       F
+ SURFTOT.WAT.VAPO           5         11244       F
+ H00020VENT_ZONAL           5         11249       F
+ H00050VENT_ZONAL           5         11254       F
+ H00100VENT_ZONAL           5         11259       F
+ H00250VENT_ZONAL           5         11264       F
+ H00500VENT_ZONAL           5         11269       F
+ H00750VENT_ZONAL           5         11274       F
+ H01000VENT_ZONAL           5         11279       F
+ H01250VENT_ZONAL           5         11284       F
+ H01500VENT_ZONAL           5         11289       F
+ H02000VENT_ZONAL           5         11294       F
+ H02500VENT_ZONAL           5         11299       F
+ H03000VENT_ZONAL           5         11304       F
+ H00020VENT_MERID           5         11309       F
+ H00050VENT_MERID           5         11314       F
+ H00100VENT_MERID           5         11319       F
+ H00250VENT_MERID           5         11324       F
+ H00500VENT_MERID           5         11329       F
+ H00750VENT_MERID           5         11334       F
+ H01000VENT_MERID           5         11339       F
+ H01250VENT_MERID           5         11344       F
+ H01500VENT_MERID           5         11349       F
+ H02000VENT_MERID           5         11354       F
+ H02500VENT_MERID           5         11359       F
+ H03000VENT_MERID           5         11364       F
+ H00020TEMPERATUR           5         11369       F
+ H00050TEMPERATUR           5         11374       F
+ H00100TEMPERATUR           5         11379       F
+ H00250TEMPERATUR           5         11384       F
+ H00500TEMPERATUR           5         11389       F
+ H00750TEMPERATUR           5         11394       F
+ H01000TEMPERATUR           5         11399       F
+ H01250TEMPERATUR           5         11404       F
+ H01500TEMPERATUR           5         11409       F
+ H02000TEMPERATUR           5         11414       F
+ H02500TEMPERATUR           5         11419       F
+ H03000TEMPERATUR           5         11424       F
+ H00020CLOUD_WATE           5         11429       F
+ H00050CLOUD_WATE           5         11434       F
+ H00100CLOUD_WATE           5         11439       F
+ H00250CLOUD_WATE           5         11444       F
+ H00500CLOUD_WATE           5         11449       F
+ H00750CLOUD_WATE           5         11454       F
+ H01000CLOUD_WATE           5         11459       F
+ H01250CLOUD_WATE           5         11464       F
+ H01500CLOUD_WATE           5         11469       F
+ H02000CLOUD_WATE           5         11474       F
+ H02500CLOUD_WATE           5         11479       F
+ H03000CLOUD_WATE           5         11484       F
+ H00020ICE_CRYSTA           5         11489       F
+ H00050ICE_CRYSTA           5         11494       F
+ H00100ICE_CRYSTA           5         11499       F
+ H00250ICE_CRYSTA           5         11504       F
+ H00500ICE_CRYSTA           5         11509       F
+ H00750ICE_CRYSTA           5         11514       F
+ H01000ICE_CRYSTA           5         11519       F
+ H01250ICE_CRYSTA           5         11524       F
+ H01500ICE_CRYSTA           5         11529       F
+ H02000ICE_CRYSTA           5         11534       F
+ H02500ICE_CRYSTA           5         11539       F
+ H03000ICE_CRYSTA           5         11544       F
+ H00020CLOUD_FRAC           5         11549       F
+ H00050CLOUD_FRAC           5         11554       F
+ H00100CLOUD_FRAC           5         11559       F
+ H00250CLOUD_FRAC           5         11564       F
+ H00500CLOUD_FRAC           5         11569       F
+ H00750CLOUD_FRAC           5         11574       F
+ H01000CLOUD_FRAC           5         11579       F
+ H01250CLOUD_FRAC           5         11584       F
+ H01500CLOUD_FRAC           5         11589       F
+ H02000CLOUD_FRAC           5         11594       F
+ H02500CLOUD_FRAC           5         11599       F
+ H03000CLOUD_FRAC           5         11604       F
+ H00020SNOW                 5         11609       F
+ H00050SNOW                 5         11614       F
+ H00100SNOW                 5         11619       F
+ H00250SNOW                 5         11624       F
+ H00500SNOW                 5         11629       F
+ H00750SNOW                 5         11634       F
+ H01000SNOW                 5         11639       F
+ H01250SNOW                 5         11644       F
+ H01500SNOW                 5         11649       F
+ H02000SNOW                 5         11654       F
+ H02500SNOW                 5         11659       F
+ H03000SNOW                 5         11664       F
+ H00020RAIN                 5         11669       F
+ H00050RAIN                 5         11674       F
+ H00100RAIN                 5         11679       F
+ H00250RAIN                 5         11684       F
+ H00500RAIN                 5         11689       F
+ H00750RAIN                 5         11694       F
+ H01000RAIN                 5         11699       F
+ H01250RAIN                 5         11704       F
+ H01500RAIN                 5         11709       F
+ H02000RAIN                 5         11714       F
+ H02500RAIN                 5         11719       F
+ H03000RAIN                 5         11724       F
+ H00020GRAUPEL              5         11729       F
+ H00050GRAUPEL              5         11734       F
+ H00100GRAUPEL              5         11739       F
+ H00250GRAUPEL              5         11744       F
+ H00500GRAUPEL              5         11749       F
+ H00750GRAUPEL              5         11754       F
+ H01000GRAUPEL              5         11759       F
+ H01250GRAUPEL              5         11764       F
+ H01500GRAUPEL              5         11769       F
+ H02000GRAUPEL              5         11774       F
+ H02500GRAUPEL              5         11779       F
+ H03000GRAUPEL              5         11784       F
+ H00020TKE                  5         11789       F
+ H00050TKE                  5         11794       F
+ H00100TKE                  5         11799       F
+ H00250TKE                  5         11804       F
+ H00500TKE                  5         11809       F
+ H00750TKE                  5         11814       F
+ H01000TKE                  5         11819       F
+ H01250TKE                  5         11824       F
+ H01500TKE                  5         11829       F
+ H02000TKE                  5         11834       F
+ H02500TKE                  5         11839       F
+ H03000TKE                  5         11844       F
+ H00020HUMI_RELAT           5         11849       F
+ H00050HUMI_RELAT           5         11854       F
+ H00100HUMI_RELAT           5         11859       F
+ H00250HUMI_RELAT           5         11864       F
+ H00500HUMI_RELAT           5         11869       F
+ H00750HUMI_RELAT           5         11874       F
+ H01000HUMI_RELAT           5         11879       F
+ H01250HUMI_RELAT           5         11884       F
+ H01500HUMI_RELAT           5         11889       F
+ H02000HUMI_RELAT           5         11894       F
+ H02500HUMI_RELAT           5         11899       F
+ H03000HUMI_RELAT           5         11904       F
+ H00020TEMPE_POTE           5         11909       F
+ H00050TEMPE_POTE           5         11914       F
+ H00100TEMPE_POTE           5         11919       F
+ H00250TEMPE_POTE           5         11924       F
+ H00500TEMPE_POTE           5         11929       F
+ H00750TEMPE_POTE           5         11934       F
+ H01000TEMPE_POTE           5         11939       F
+ H01250TEMPE_POTE           5         11944       F
+ H01500TEMPE_POTE           5         11949       F
+ H02000TEMPE_POTE           5         11954       F
+ H02500TEMPE_POTE           5         11959       F
+ H03000TEMPE_POTE           5         11964       F
+ H00020THETA_PRIM           5         11969       F
+ H00050THETA_PRIM           5         11974       F
+ H00100THETA_PRIM           5         11979       F
+ H00250THETA_PRIM           5         11984       F
+ H00500THETA_PRIM           5         11989       F
+ H00750THETA_PRIM           5         11994       F
+ H01000THETA_PRIM           5         11999       F
+ H01250THETA_PRIM           5         12004       F
+ H01500THETA_PRIM           5         12009       F
+ H02000THETA_PRIM           5         12014       F
+ H02500THETA_PRIM           5         12019       F
+ H03000THETA_PRIM           5         12024       F
+ H00020SIM_REFLEC           5         12029       F
+ H00050SIM_REFLEC           5         12034       F
+ H00100SIM_REFLEC           5         12039       F
+ H00250SIM_REFLEC           5         12044       F
+ H00500SIM_REFLEC           5         12049       F
+ H00750SIM_REFLEC           5         12054       F
+ H01000SIM_REFLEC           5         12059       F
+ H01250SIM_REFLEC           5         12064       F
+ H01500SIM_REFLEC           5         12069       F
+ H02000SIM_REFLEC           5         12074       F
+ H02500SIM_REFLEC           5         12079       F
+ H03000SIM_REFLEC           5         12084       F
+ H00020THETA_VIRT           5         12089       F
+ H00050THETA_VIRT           5         12094       F
+ H00100THETA_VIRT           5         12099       F
+ H00250THETA_VIRT           5         12104       F
+ H00500THETA_VIRT           5         12109       F
+ H00750THETA_VIRT           5         12114       F
+ H01000THETA_VIRT           5         12119       F
+ H01250THETA_VIRT           5         12124       F
+ H01500THETA_VIRT           5         12129       F
+ H02000THETA_VIRT           5         12134       F
+ H02500THETA_VIRT           5         12139       F
+ H03000THETA_VIRT           5         12144       F
+ H00020PRESSURE             5         12149       F
+ H00050PRESSURE             5         12154       F
+ H00100PRESSURE             5         12159       F
+ H00250PRESSURE             5         12164       F
+ H00500PRESSURE             5         12169       F
+ H00750PRESSURE             5         12174       F
+ H01000PRESSURE             5         12179       F
+ H01250PRESSURE             5         12184       F
+ H01500PRESSURE             5         12189       F
+ H02000PRESSURE             5         12194       F
+ H02500PRESSURE             5         12199       F
+ H03000PRESSURE             5         12204       F
+ H00020VERT.VELOC           5         12209       F
+ H00050VERT.VELOC           5         12214       F
+ H00100VERT.VELOC           5         12219       F
+ H00250VERT.VELOC           5         12224       F
+ H00500VERT.VELOC           5         12229       F
+ H00750VERT.VELOC           5         12234       F
+ H01000VERT.VELOC           5         12239       F
+ H01250VERT.VELOC           5         12244       F
+ H01500VERT.VELOC           5         12249       F
+ H02000VERT.VELOC           5         12254       F
+ H02500VERT.VELOC           5         12259       F
+ H03000VERT.VELOC           5         12264       F
+ SURFPRESSION               5         12269       F
+ SURFISOTPW0.MALT           5         12274       F
+ SURFCAPE.POS.F00           5         12279       F
+ V015VENT_ZONAL             5         12284       F
+ V020VENT_ZONAL             5         12289       F
+ V015VENT_MERIDIE           5         12294       F
+ V020VENT_MERIDIE           5         12299       F
+ V015TEMPERATURE            5         12304       F
+ V020TEMPERATURE            5         12309       F
+ V015CLOUD_WATER            5         12314       F
+ V020CLOUD_WATER            5         12319       F
+ V015ICE_CRYSTAL            5         12324       F
+ V020ICE_CRYSTAL            5         12329       F
+ V015CLOUD_FRACTI           5         12334       F
+ V020CLOUD_FRACTI           5         12339       F
+ V015SNOW                   5         12344       F
+ V020SNOW                   5         12349       F
+ V015RAIN                   5         12354       F
+ V020RAIN                   5         12359       F
+ V015GRAUPEL                5         12364       F
+ V020GRAUPEL                5         12369       F
+ V015TKE                    5         12374       F
+ V020TKE                    5         12379       F
+ V015GEOPOTENTIEL           5         12384       F
+ V020GEOPOTENTIEL           5         12389       F
+ V015HUMI_RELATIV           5         12394       F
+ V020HUMI_RELATIV           5         12399       F
+ V015TEMPE_POTENT           5         12404       F
+ V020TEMPE_POTENT           5         12409       F
+ V015THETA_PRIM_W           5         12414       F
+ V020THETA_PRIM_W           5         12419       F
+ V015SIM_REFLECTI           5         12424       F
+ V020SIM_REFLECTI           5         12429       F
+ V015THETA_VIRTUA           5         12434       F
+ V020THETA_VIRTUA           5         12439       F
+ V015PRESSURE               5         12444       F
+ V020PRESSURE               5         12449       F
+ V015VERT.VELOCIT           5         12454       F
+ V020VERT.VELOCIT           5         12459       F
+ V015VITESSE_VERT           5         12464       F
+ V020VITESSE_VERT           5         12469       F
+ V015ABS_VORTICIT           5         12474       F
+ V020ABS_VORTICIT           5         12479       F
+ V015DIVERGENCE             5         12484       F
+ V020DIVERGENCE             5         12489       F
+ -------------------------------------------------------

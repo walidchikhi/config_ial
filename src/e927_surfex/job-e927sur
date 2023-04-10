@@ -1,0 +1,129 @@
+#!/bin/bash
+#SBATCH --partition=Researches
+#SBATCH --job-name="AR927-S"
+#SBATCH -n 128
+#SBATCH -c 1
+#SBATCH -N 8
+#SBATCH -t 06:00:00
+#SBATCH --exclusive
+#SBATCH --verbose
+#SBATCH --output=stdout
+#SBATCH --error=stderr
+# -N : nombre de noeuds
+# -n : nombre TOTAL de taches MPI
+# -c : nombre de threads (OMP)
+
+. ~/.bashrc
+MPI_TASKS=$SLURM_NTASKS
+NPROC=$MPI_TASKS
+
+MPITASKS_PER_NODE=$((SLURM_NTASKS/SLURM_JOB_NUM_NODES))
+# ========================================= DZ
+export EC_PROFILE_HEAP=0
+
+#=======BEGIN FABRIC============= 
+#export I_MPI_DEBUG=100
+#=======END FABRIC===============
+
+export F_PROGINF=DETAIL
+export F_FTRACE=FMT2
+export F_RECLUNIT=BYTE
+export F_SYSLEN=1024
+export F_FMTBUF=131072
+export F_SETBUF=32768
+export F_SETBUF6=0
+export F_SETBUF0=0
+export F_ERRCNT=1
+export DR_HOOK=0
+export DR_HOOK_IGNORE_SIGNALS=-1
+export MPIPROGINF="ON"
+export MPIDEBUG="ON"
+export MPISUSPEND="ON"
+
+export MPIEXPORT="EC_PROFILE_HEAP,F_PROGINF,F_FTRACE,F_RECLUNIT,F_SYSLEN,F_FMTBUF,F_SETBUF,F_SETBUF6,F_SETBUF0,F_ERRCNT,DR_HOOK,DR_HOOK_IGNORE_SIGNALS,MPIPROG
+INF,MPIDEBUG,MPISUSPEND"
+
+#==========================================
+
+
+echo NNODES=$NNODES
+echo MPITASKS_PER_NODE=$MPITASKS_PER_NODE
+echo MPI_TASKS=$MPI_TASKS
+echo OMP_NUM_THREADS=$OMP_NUM_THREADS
+export KMP_STACKSIZE=1G
+export KMP_MONITOR_STACKSIZE=1G
+ulimit -s unlimited
+export DR_HOOK_SILENT=1
+export DR_HOOK_OPT=prof
+export MPL_MBX_SIZE=2048000000
+export EC_MPI_ATEXIT=0
+export ECCODES_SAMPLES_PATH=/onm/dem/home/wchikhi/LIB/eccodes/share/eccodes/samples
+export ECCODES_DEFINITION_PATH=/onm/dem/home/wchikhi/LIB/eccodes/share/eccodes/definitions
+
+#=================== ENVIRONMENT ==================
+source /opt/ohpc/pub/intel/oneapi/setvars.sh
+export FI_PROVIDER=verbs
+export FI_VERBS_DEVICE_NAME=mlx4_0
+export FI_VERBS_IFACE=ib0
+#==================================================
+
+AA=`echo $DATE |cut -c1-4`
+MM=`echo $DATE |cut -c5-6`
+DD=`echo $DATE |cut -c7-8`
+
+mkdir -p $tmpdir_927_surfex
+cd $tmpdir
+rm -f *
+
+# options d'optimisation a l'execution.
+export ZOPT=""
+date
+CYCLE=43
+NCONF=001
+VERSION=meteo
+CNMEXP='FPOS' 
+NSTOP=t0
+TSTEP=1800.
+ADVEC=eul
+MODEL=arpifs
+DOM='ALGE'
+LMPOFF='FALSE'
+LECHKEVO='FALSE'
+pref='ALGE'
+export CFPDOM=ALGE
+
+
+
+ln -s ${ecoclimap_dir}/ecoclimapI_covers_param.bin       ecoclimapI_covers_param.bin
+ln -s ${ecoclimap_dir}/ecoclimapII_eu_covers_param.bin   ecoclimapII_eu_covers_param.bin
+ln -s ${ecoclimap_dir}/ecoclimapII_af_covers_param.bin  ecoclimapII_af_covers_param.bin
+
+ln -sf $EXECUTABLE MASTERODB
+
+sed "s/NBPROC/$NPROC/g"   namel_e927_sfx >  fort.4
+cp    $namel_e927_sfx_cpl    PRE_REAL1.nam
+
+cp $INP_DATA/ICMSHALAD_2022${MM}${DD}00_0000 ICMSH${CNMEXP}INIT
+
+cp $clim_model_bigger   Const.Clim
+cp $clim_model_config   const.clim.ALGE
+cp $clim_pgd            const.clim.sfx.ALGE 
+  
+
+
+
+$execution_bin  -genv I_MPI_DEBUG=1000 ./MASTERODB    > lola 1  #>&2
+
+
+#=== SAVE_DATA ===== 
+cp  PFFPOSALGE+0000.sfx  $OUT_CPL/INIT_SURF.fa
+
+
+#      ***************
+#      *  Listing    *
+#      ***************
+if [ -a NODE.001_01 ] ; then
+  for file in NODE* ; do
+    \cat $file
+  done
+fi

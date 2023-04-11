@@ -68,5 +68,5 @@ export current_dir=$current_dir
 export CONFIG_FILE=${CONFIG_FILE} 
 
 
-echo 'The Job Running : '   ${current_dir}/src/${JOB_NAME}/job
-sbatch ${current_dir}/src/${JOB_NAME}/job  $CONFIG_FILE
+echo 'The Job Running : '   ${ial_config_rep}/src/${JOB_NAME}/job
+sbatch ${ial_config_rep}/src/${JOB_NAME}/job  $CONFIG_FILE

@@ -97,7 +97,7 @@ export CFPDOM=ALGE
 
 for (( j=$start_ech; j<=$end_ech; j+=$step_ech ));
 do
- i=$(printf "%04444d" $j)
+ i=$(printf "%04d" $j)
 # COPY ICMSH 
 cp $INP_DATA/ICMSHALAD_${AA}${MM}${DD}00_${i}  ICMSH${CNMEXP}INIT 
 

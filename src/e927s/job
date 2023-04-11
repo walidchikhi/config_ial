@@ -1,14 +1,14 @@
 #!/bin/bash
 #SBATCH --partition=Researches
 #SBATCH --job-name="AR927-S"
-#SBATCH -n 128
+#SBATCH -n 32
 #SBATCH -c 1
-#SBATCH -N 8
-#SBATCH -t 06:00:00
+#SBATCH -N 2
+#SBATCH -t 01:00:00
 #SBATCH --exclusive
 #SBATCH --verbose
-#SBATCH --output=stdout
-#SBATCH --error=stderr
+#SBATCH --output=stdout-e927s
+#SBATCH --error=stderr-e927s
 # -N : nombre de noeuds
 # -n : nombre TOTAL de taches MPI
 # -c : nombre de threads (OMP)
@@ -67,9 +67,11 @@ export FI_VERBS_DEVICE_NAME=mlx4_0
 export FI_VERBS_IFACE=ib0
 #==================================================
 
-mkdir -p $tmpdir_927_surfex
-cd $tmpdir
-rm -f *
+source ${CONFIG_FILE}
+
+
+mkdir -p ${tmpdir_e927_surfex}
+cd        $tmpdir_e927_surfex
 
 # options d'optimisation a l'execution.
 export ZOPT=""
@@ -96,10 +98,10 @@ ln -s ${ecoclimap_dir}/ecoclimapII_af_covers_param.bin  ecoclimapII_af_covers_pa
 
 ln -sf $EXECUTABLE MASTERODB
 
-sed "s/NBPROC/$NPROC/g"   namel_e927_sfx >  fort.4
+sed "s/NBPROC/$NPROC/g"   $namel_e927_sfx >  fort.4
 cp    $namel_e927_sfx_cpl    PRE_REAL1.nam
 
-cp $INP_DATA/ICMSHALAD_2022${MM}${DD}00_0000 ICMSH${CNMEXP}INIT
+cp $INP_DATA/${INP_DATA_name}_0000    ICMSH${CNMEXP}INIT
 
 cp $clim_model_bigger   Const.Clim
 cp $clim_model_config   const.clim.ALGE

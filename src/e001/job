@@ -72,6 +72,10 @@ export FI_PROVIDER=verbs
 export FI_VERBS_DEVICE_NAME=mlx4_0
 export FI_VERBS_IFACE=ib0
 #==================================================
+source $CONFIG_FILE
+echo $CONFIG_FILE
+
+
 rr=00
 AA=`echo $DATE |cut -c1-4`
 MM=`echo $DATE |cut -c5-6`
@@ -79,10 +83,8 @@ DD=`echo $DATE |cut -c7-8`
 
 mkdir -p $tmpdir_e001
 cd $tmpdir_e001
-rm -f *
 
-
-ln -sf  $tmpdir_e001  $current_dir/tmp/tmp_e001
+ln -sf  $tmpdir_e001  $current_dir/tmp_e001
 # options d'optimisation a l'execution.
 export ZOPT=""
 date
@@ -109,69 +111,15 @@ ln -s ${ecoclimap_dir}/ecoclimapII_af_covers_param.bin  ecoclimapII_af_covers_pa
 sed "s/NBPROC/$NPROC/g" $namel_e001 > fort.4
 cp $namel_e001_sfx    EXSEG1.nam
 ln -sf $EXECUTABLE  MASTERODB 
-cp   $const  .
+cp   $const/*  .
 
 for (( j=$start_ech; j<=$end_ech; j+=$step_ech ));
 do
- ECHPL=$(printf "%02d" $j)
+ ECHPL=$(printf "%03d" $j)
+ set -x
+  # fichiers coupleurs 
+ln -sf $OUT_CPL/COUPLAGE_AROME_${AA}${MM}${DD}00_0${ECHPL}  ELSCF${CNMEXP}ALBC${ECHPL} 
 
-set -x
-# fichiers coupleurs 
-for iech in $ECHCPL
- do
-    case $iech in
-      00) icoupl='000' ;;
-      01) icoupl='001' ;;
-      02) icoupl='002' ;;
-      03) icoupl='003' ;;
-      04) icoupl='004' ;;
-      05) icoupl='005' ;;
-      06) icoupl='006' ;;
-      07) icoupl='007' ;;
-      08) icoupl='008' ;;
-      09) icoupl='009' ;;
-      10) icoupl='010' ;;
-      11) icoupl='011' ;;
-      12) icoupl='012' ;;
-      13) icoupl='013' ;;
-      14) icoupl='014' ;;
-      15) icoupl='015' ;;
-      16) icoupl='016' ;;
-      17) icoupl='017' ;;
-      18) icoupl='018' ;;
-      19) icoupl='019' ;;
-      20) icoupl='020' ;;
-      21) icoupl='021' ;;
-      22) icoupl='022' ;;
-      23) icoupl='023' ;;
-      24) icoupl='024' ;;
-      25) icoupl='025' ;;
-      26) icoupl='026' ;;
-      27) icoupl='027' ;;
-      28) icoupl='028' ;;
-      29) icoupl='029' ;;
-      30) icoupl='030' ;;
-      31) icoupl='031' ;;
-      32) icoupl='032' ;;
-      33) icoupl='033' ;;
-      34) icoupl='034' ;;
-      35) icoupl='035' ;;
-      36) icoupl='036' ;;
-      37) icoupl='037' ;;
-      38) icoupl='038' ;;
-      39) icoupl='039' ;;
-      40) icoupl='040' ;;
-      41) icoupl='041' ;;
-      42) icoupl='042' ;;
-      43) icoupl='043' ;;
-      44) icoupl='044' ;;
-      45) icoupl='045' ;;
-      46) icoupl='046' ;;
-      47) icoupl='047' ;;
-      48) icoupl='048' ;;
-    esac 
-
-ln -sf $OUT_CPL/COUPLAGE_AROME_${AA}${MM}${DD}00_00${iech}  ELSCF${CNMEXP}ALBC${icoupl} 
 done
 
 cp ELSCF${CNMEXP}ALBC000 ICMSH${CNMEXP}INIT
@@ -204,12 +152,10 @@ fi
 
 mkdir -p $OUT_ICMSH $OUT_FPOS
 
-for (( j=$start_ech; j<=$end_ech; j+=$step_ech ));
+for (( j=$start_ech; j<=$end_ech; j+=$step_ech ));;
 do
  i=$(printf "%02d" $j)
 mv ICMSHAL03+00${i} $OUT_ICMSH
 mv PFAL03ALGE01+00${i} $OUT_FPOS
 
 done
-
-

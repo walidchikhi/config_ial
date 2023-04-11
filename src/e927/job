@@ -69,7 +69,6 @@ echo $AA$MM$JJ
 mkdir -p $OUT_CPL
 mkdir -p $tmpdir_e927
 cd $tmpdir_e927
-rm -f *
 
 ln -s $tmpdir_e927  $current_dir/tmp/tmp_e927
 

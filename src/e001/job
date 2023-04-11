@@ -67,7 +67,7 @@ export ECCODES_DEFINITION_PATH=/onm/dem/home/wchikhi/LIB/eccodes/share/eccodes/d
 
 
 #=================== ENVIRONMENT ==================
-source /opt/ohpc/pub/intel/oneapi/setvars.sh
+#source /opt/ohpc/pub/intel/oneapi/setvars.sh
 export FI_PROVIDER=verbs
 export FI_VERBS_DEVICE_NAME=mlx4_0
 export FI_VERBS_IFACE=ib0

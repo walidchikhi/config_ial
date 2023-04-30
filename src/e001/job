@@ -1,77 +1,87 @@
 #!/bin/bash
-#SBATCH --partition=Researches
-#SBATCH --job-name="ALA-E001"
-#SBATCH -n 64
-#SBATCH -c 1
-#SBATCH -N 4
-#SBATCH -t 23:00:00
-#SBATCH --exclusive
-#SBATCH --verbose
-#SBATCH --output=stdout_e001
-#SBATCH --error=stderr_e001
+#SBATCH -p normal256
+#SBATCH -n 32
+#SBATCH -c 4
+#SBATCH -N 1
+#SBATCH -t 01:20:00
+#SBATCH --job-name="w-e001-ar"
+#SBATCH --mem=250000
+#SBATCH --exclusiv
+#SBATCH --export=NONE
+
 # -N : nombre de noeuds
 # -n : nombre TOTAL de taches MPI
 # -c : nombre de threads (OMP)
-echo "@@ `date`"
-start=`date +%T`
-# echo $(date +"%T") > ${HOME}/onm/RUN/LOGS/arome_execu_time
 
-. ~/.bash_profile
-MPI_TASKS=$SLURM_NTASKS   
-NPROC=$MPI_TASKS
-echo $NPROC
+# Start by cd to the TMPDIR because Slurm won't do it for you !!!!!!!
+cd $TMPDIR
+
+# change the output file name
+mv ${SLURM_SUBMIT_DIR}/slurm-${SLURM_JOB_ID}.out ${SLURM_SUBMIT_DIR}/${SLURM_JOB_NAME}.o${SLURM_JOB_ID}
+echo ${SLURM_JOB_ID} > IDe001
+# ------------------------------------------------------------------------------------------------------------------------------------------------------
+#                                                             ENVIRONMENT AND JOB SETTINGS
+# ------------------------------------------------------------------------------------------------------------------------------------------------------
+
+# Job management:
+# ---------------
+#JOB_INITDIR=$SLURM_CHECKPOINT_IMAGE_DIR
+# Sorry, but JOB_NAME is lost with the mandatory --export=NONE
+#export JOB_NAME=SDSCPL
+#export JOB_ID=$SLURM_JOB_ID
+
+
+
+#echo JOB_INITDIR=$JOB_INITDIR
+#echo JOB_NAME=$JOB_NAME
+#echo JOB_ID=$JOB_ID
+export AUTO_PROFILE_HT="on"
+# Number of nodes/mpi-tasks/omp-threads:
+# -------------------------------------
+# -------------------------------------
+NNODES=$SLURM_JOB_NUM_NODES
+# Number of MPI tasks per node:
 MPITASKS_PER_NODE=$((SLURM_NTASKS/SLURM_JOB_NUM_NODES))
+# Number of OPEN-MP threads per MPI task :
 export OMP_NUM_THREADS=$((SLURM_CPUS_ON_NODE/MPITASKS_PER_NODE))
-# ========================================= DZ
-export EC_PROFILE_HEAP=0
+# Total number of MPI tasks:
+MPI_TASKS=$SLURM_NTASKS
+NPROC=$MPI_TASKS
 
-#=======BEGIN FABRIC============= 
-#export I_MPI_DEBUG=100
-#=======END FABRIC===============
-
-export F_PROGINF=DETAIL
-export F_FTRACE=FMT2
-export F_RECLUNIT=BYTE
-export F_SYSLEN=1024
-export F_FMTBUF=131072
-export F_SETBUF=32768
-export F_SETBUF6=0
-export F_SETBUF0=0
-export F_ERRCNT=1
-export DR_HOOK=0
-export DR_HOOK_IGNORE_SIGNALS=-1
-export MPIPROGINF="ON"
-export MPIDEBUG="ON"
-export MPISUSPEND="ON"
-
-export MPIEXPORT="EC_PROFILE_HEAP,F_PROGINF,F_FTRACE,F_RECLUNIT,F_SYSLEN,F_FMTBUF,F_SETBUF,F_SETBUF6,F_SETBUF0,F_ERRCNT,DR_HOOK,DR_HOOK_IGNORE_SIGNALS,MPIPROG
-INF,MPIDEBUG,MPISUSPEND"
-
-#==========================================
-
-NNODES=$SLURM_JOB_NUM_NODES   #Ana
 echo NNODES=$NNODES
 echo MPITASKS_PER_NODE=$MPITASKS_PER_NODE
 echo MPI_TASKS=$MPI_TASKS
 echo OMP_NUM_THREADS=$OMP_NUM_THREADS
-export KMP_STACKSIZE=1G
-export KMP_MONITOR_STACKSIZE=1G
+
+# Specific environment variables :
+# ------------------------------
+set -x
+export OMP_STACKSIZE=4G
+export KMP_STACKSIZE=4G
+export KMP_MONITOR_STACKSIZE=4G
+set +x
 ulimit -s unlimited
+
+# Software default environment variables :
+# --------------------------------------
+set -x
+export DR_HOOK=1
+export DR_HOOK_IGNORE_SIGNALS=-1
 export DR_HOOK_SILENT=1
-export DR_HOOK_OPT=prof
+export DR_HOOK_SHOW_PROCESS_OPTIONS=0
 export MPL_MBX_SIZE=2048000000
+export EC_PROFILE_HEAP=0
+export EC_PROFILE_MEM=0
 export EC_MPI_ATEXIT=0
-export ECCODES_SAMPLES_PATH=/onm/dem/home/wchikhi/LIB/eccodes/share/eccodes/ifs_samples/grib1
-export ECCODES_DEFINITION_PATH=/onm/dem/home/wchikhi/LIB/eccodes/share/eccodes/definitions
+export EC_MEMINFO=0
+export OPENBLAS_NUM_THREADS=1
+export MKL_CBWR="AUTO,STRICT"
+export MKL_NUM_THREADS=1
+export MKL_DEBUG_CPU_TYPE=5
+export ECCODES_SAMPLES_PATH=/opt/softs/libraries/ICC_2018.5.274/eccodes-2.17.0/share/eccodes/ifs_samples/grib1
+export ECCODES_DEFINITION_PATH=/opt/softs/libraries/ICC_2018.5.274/eccodes-2.17.0/share/eccodes/definitions
+set +x
 
-
-
-#=================== ENVIRONMENT ==================
-#source /opt/ohpc/pub/intel/oneapi/setvars.sh
-export FI_PROVIDER=verbs
-export FI_VERBS_DEVICE_NAME=mlx4_0
-export FI_VERBS_IFACE=ib0
-#==================================================
 source $CONFIG_FILE
 echo $CONFIG_FILE
 
@@ -81,10 +91,8 @@ AA=`echo $DATE |cut -c1-4`
 MM=`echo $DATE |cut -c5-6`
 DD=`echo $DATE |cut -c7-8`
 
-mkdir -p $tmpdir_e001
-cd $tmpdir_e001
 
-ln -sf  $tmpdir_e001  $current_dir/tmp_e001
+ln -sf  $TMPDIR  $current_dir/tmp_e001
 # options d'optimisation a l'execution.
 export ZOPT=""
 date

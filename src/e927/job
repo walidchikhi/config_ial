@@ -5,7 +5,7 @@
 #SBATCH -N 1
 #SBATCH -t 01:20:00
 #SBATCH --job-name="w-e001-ar"
-#SBATCH --mem=250000
+#SBATCH --mem=247000
 #SBATCH --exclusiv
 #SBATCH --export=NONE
 
@@ -18,7 +18,6 @@ cd $TMPDIR
 
 # change the output file name
 mv ${SLURM_SUBMIT_DIR}/slurm-${SLURM_JOB_ID}.out ${SLURM_SUBMIT_DIR}/${SLURM_JOB_NAME}.o${SLURM_JOB_ID}
-echo ${SLURM_JOB_ID} > IDe001
 # ------------------------------------------------------------------------------------------------------------------------------------------------------
 #                                                             ENVIRONMENT AND JOB SETTINGS
 # ------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -90,11 +89,11 @@ jour=$(date '+%Y%m%d%H')
 
 echo $jour
 #AA=$(echo $jour | cut -c1-4)
-AA=2018
+AA=2022
 #MM=$(echo $jour | cut -c5-6)
-MM=05
+MM=12
 #JJ=$(echo $jour | cut -c7-8)
-JJ=12
+JJ=26
 HH=$(echo $jour | cut -c9-10)
 YYYY=$AA
 MMDD=$MM$JJ
@@ -103,21 +102,18 @@ MMDD=$MM$JJ
 #      *  Directories  *
 #      *****************
 #==================================================
+echo "config file : "  $CONFIG_FILE
 
+source /home/gmap/mrpe/chikhiw/config/./config_arome_500m
 
-
-source $CONFIG_FILE
-echo $CONFIG_FILE
-echo "$OUT_CPL $tmpdir_e927" 
 
 echo $AA$MM$JJ
-
 #================== CREATE DIRECTORIES AND COOPY NEEDED FILES ========
 
-mkdir -p $OUT_CPL
-cd $TMPDIR
+#mkdir -p $OUT_CPL
+#cd $TMPDIR
 
-ln -s cd $TMPDIR  $current_dir/tmp/tmp_e927
+ln -s  $TMPDIR  $current_dir/tmp/tmp_e927
 
 sed "s/NBPROC/$NPROC/g" $namel_e927 > fort.4
 ln -s $EXECUTABLE MASTERODB
@@ -145,7 +141,7 @@ for (( j=$start_ech; j<=$end_ech; j+=$step_ech ));
 do
  i=$(printf "%04d" $j)
 # COPY ICMSH 
-cp $INP_DATA/ICMSHALAD_${AA}${MM}${DD}00_${i}  ICMSH${CNMEXP}INIT 
+cp $INP_DATA/${INP_DATA_name}_${i}  ICMSH${CNMEXP}INIT 
 
 ## COPY CLIMS 
 cp  $clim_model_bigger                       Const.Clim

@@ -64,9 +64,14 @@ export current_dir=$current_dir
 # ==== RUN JOB ==== #
 
 
+CONFIG_FILE=$PWD/`find -iname ${CONFIG_FILE}`
 
-export CONFIG_FILE=${CONFIG_FILE} 
-
+export CONFIG_FILE
 
 echo 'The Job Running : '   ${ial_config_rep}/src/${JOB_NAME}/job
-sbatch ${ial_config_rep}/src/${JOB_NAME}/job  $CONFIG_FILE
+echo 'The configuration File : ' ${CONFIG_FILE} 
+
+sbatch ${ial_config_rep}/src/${JOB_NAME}/job $CONFIG_FILE
+
+
+  

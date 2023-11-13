@@ -85,33 +85,17 @@ set +x
 # ------------------------------------------------------------------------------------------------------------------------------------------------------
 #                                                             EXPERIMENT SPECIFIC SETTINGS
 # ------------------------------------------------------------------------------------------------------------------------------------------------------
-jour=$(date '+%Y%m%d%H')
-
-echo $jour
-#AA=$(echo $jour | cut -c1-4)
-AA=2022
-#MM=$(echo $jour | cut -c5-6)
-MM=12
-#JJ=$(echo $jour | cut -c7-8)
-JJ=26
-HH=$(echo $jour | cut -c9-10)
-YYYY=$AA
-MMDD=$MM$JJ
 
 #      *****************
 #      *  Directories  *
 #      *****************
 #==================================================
 echo "config file : "  $CONFIG_FILE
-
-source /home/gmap/mrpe/chikhiw/config/./config_arome_500m
-
-
+echo $CONFIG_FILE
+exit 
+source $CONFIG_FILE
 echo $AA$MM$JJ
 #================== CREATE DIRECTORIES AND COOPY NEEDED FILES ========
-
-#mkdir -p $OUT_CPL
-#cd $TMPDIR
 
 ln -s  $TMPDIR  $current_dir/tmp/tmp_e927
 
@@ -139,9 +123,9 @@ export CFPDOM=ALGE
 
 for (( j=$start_ech; j<=$end_ech; j+=$step_ech ));
 do
- i=$(printf "%04d" $j)
+ i=$(printf "%02d" $j)
 # COPY ICMSH 
-cp $INP_DATA/${INP_DATA_name}_${i}  ICMSH${CNMEXP}INIT 
+cp ${INP_e927_dir}/${INP_e927_name}${i}  ICMSH${CNMEXP}INIT 
 
 ## COPY CLIMS 
 cp  $clim_model_bigger                       Const.Clim
@@ -150,12 +134,14 @@ cp  $clim_model_config                       const.clim.ALGE
 
 $execution_bin  -genv I_MPI_DEBUG=1000 ./MASTERODB    > lola 1>&2
 
-mv  PFFPOSALGE+0000 $OUT_CPL/COUPLAGE_AROME_${i}
+mv  PFFPOSALGE+0000 ${out_e927_dir}/${out_e927_name}${i}
+
 done
 
 #      ***************
 #      *  Listing    *
 #      ***************
+
 if [ -a NODE.001_01 ] ; then
   for file in NODE* ; do
     \cat $file

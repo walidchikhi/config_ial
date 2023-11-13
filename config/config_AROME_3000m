@@ -5,17 +5,29 @@ MM=`echo $DATE |cut -c5-6`
 DD=`echo $DATE |cut -c7-8`
 rr=00
 
+# Non changeable const 
+ecoclimap_dir=${HOME}/exp/V8.0
+const_ray=
+
 #==TMPDIR
 
 tmpdir_e927=${HOME}/tmp/AROME/AROM-E927-${DD}${MM}${AA}
 tmpdir_927_surfex=
+tmpdir_e001=
 
 #== IO DATA DIRS 
-OUT_CPL=/onm/dem/home/wchikhi/output/AROME/CPL/$DD$MM$AA
-INP_DATA=/onm/dem/home/wchikhi/tmp/INPUT/${DD}${MM}${AA}
-INP_DATA_name= 
-OUT_ICMSH=
-OUT_FPOS=
+# INP COUPLAGE / surfex de forme ${INP_e927_dir}/${Inp_e927_name}_${iech}  : iech en 2 chiffres
+INP_e927_dir=
+Inp_e927_name=
+# Coupleurs ; In e001  de forme :  ${out_e927_dir}/${out_e927_name}_${iech}  : iech en 2 chiffres
+out_e927_dir=/onm/dem/home/wchikhi/output/AROME/CPL/$DD$MM$AA
+out_e927_name=
+
+# output e001 
+OUT_ICMSH_dir=
+OUT_FPOS_dir=
+OUT_ICMSH_name=
+OUT_FPOS_name=
 
 #== EXEX
 EXECUTABLE=/onm/dem/home/wchikhi/pack/46t1_bf03.01.INTEL.x/bin/MASTERODB
@@ -30,11 +42,9 @@ namel_e001=
 #== Ech and other staffs
 nb_echeance=
 start_ech=00
-end_ech=02
+end_ech=24
 step_ech=01
 echeance_list=
-ecoclimap_dir=${HOME}/exp/V8.0
-
 
 #== Const Clims
 
@@ -42,5 +52,3 @@ clim_model_bigger=/onm/dem/home/wchikhi/exp/aladin/ALADIN_model_6km_m${MM}
 clim_model_config=/onm/dem/home/wchikhi/exp/arome/AROME_model_m${MM}
 clim_bdap_config=
 clim_pgd= 
-
-

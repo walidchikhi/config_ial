@@ -96,9 +96,9 @@ export CFPDOM=ALGE
 
 for (( j=$start_ech; j<=$end_ech; j+=$step_ech ));
 do
- i=$(printf "%04d" $j)
+ i=$(printf "%02d" $j)
 # COPY ICMSH 
-cp $INP_DATA/ICMSHALAD_${AA}${MM}${DD}00_${i}  ICMSH${CNMEXP}INIT 
+cp ${INP_e927_dir}/${INP_e927_name}${i}  ICMSH${CNMEXP}INIT 
 
 ## COPY CLIMS 
 cp  $clim_model_bigger                       Const.Clim
@@ -107,12 +107,14 @@ cp  $clim_model_config                       const.clim.ALGE
 
 $execution_bin  -genv I_MPI_DEBUG=1000 ./MASTERODB    > lola 1>&2
 
-mv  PFFPOSALGE+0000 $OUT_CPL/COUPLAGE_AROME_${i}
+mv  PFFPOSALGE+0000 ${out_e927_dir}/${out_e927_name}${i}
+
 done
 
 #      ***************
 #      *  Listing    *
 #      ***************
+
 if [ -a NODE.001_01 ] ; then
   for file in NODE* ; do
     \cat $file

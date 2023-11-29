@@ -101,7 +101,7 @@ ln -sf $EXECUTABLE MASTERODB
 sed "s/NBPROC/$NPROC/g"   $namel_e927_sfx >  fort.4
 cp    $namel_e927_sfx_cpl    PRE_REAL1.nam
 
-cp $INP_DATA/${INP_DATA_name}_0000    ICMSH${CNMEXP}INIT
+cp  ${INP_e927s_dir}/${INP_e927_name}0000    ICMSH${CNMEXP}INIT
 
 cp $clim_model_bigger   Const.Clim
 cp $clim_model_config   const.clim.ALGE
@@ -114,7 +114,7 @@ $execution_bin  -genv I_MPI_DEBUG=1000 ./MASTERODB    > lola 1  #>&2
 
 
 #=== SAVE_DATA ===== 
-cp  PFFPOSALGE+0000.sfx  $OUT_CPL/INIT_SURF.fa
+cp  PFFPOSALGE+0000.sfx  ${out_e927_dir}/${out_e927s_name}
 
 
 #      ***************

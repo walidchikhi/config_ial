@@ -109,22 +109,66 @@ ln -s ${ecoclimap_dir}/ecoclimapI_covers_param.bin       ecoclimapI_covers_param
 ln -s ${ecoclimap_dir}/ecoclimapII_eu_covers_param.bin   ecoclimapII_eu_covers_param.bin
 ln -s ${ecoclimap_dir}/ecoclimapII_af_covers_param.bin  ecoclimapII_af_covers_param.bin
 sed "s/NBPROC/$NPROC/g" $namel_e001 > fort.4
-cp $namel_e001_sfx    EXSEG1.nam
+
+if [ -e "$namel_e001_sfx" ]; then
+  cp $namel_e001_sfx    EXSEG1.nam
+fi
+
 ln -sf $EXECUTABLE  MASTERODB 
 cp   $const/*  .
 
-for (( j=$start_ech; j<=$end_ech; j+=$step_ech ));
-do
- ECHPL=$(printf "%03d" $j)
- set -x
-  # fichiers coupleurs 
-ln -sf $OUT_CPL/COUPLAGE_AROME_${AA}${MM}${DD}00_0${ECHPL}  ELSCF${CNMEXP}ALBC${ECHPL} 
+if [ "$coupl_type" -eq 3 ]; then
 
+for ((j = $start_ech; j <= $end_ech; j += $step_ech)); do
+  ECHPL=$(printf "%02d" $j)
+  set -x
+    case $ECHPL in
+      00) icoupl='00' ;;
+      03) icoupl='01' ;;
+      06) icoupl='02' ;;
+      09) icoupl='03' ;;
+      12) icoupl='04' ;;
+      15) icoupl='05' ;;
+      18) icoupl='06' ;;
+      21) icoupl='07' ;;
+      24) icoupl='08' ;;
+      27) icoupl='09' ;;
+      30) icoupl='10' ;;
+      33) icoupl='11' ;;
+      36) icoupl='12' ;;
+      39) icoupl='13' ;;
+      42) icoupl='14' ;;
+      45) icoupl='15' ;;
+      48) icoupl='16' ;;
+      51) icoupl='17' ;;
+      54) icoupl='18' ;;
+      57) icoupl='19' ;;
+      60) icoupl='20' ;;
+      63) icoupl='21' ;;
+      66) icoupl='22' ;;
+      69) icoupl='23' ;;
+      72) icoupl='24' ;;
+    esac
+    echo "Mapped value for $ECHPL is $icoupl"
+    ln -sf "${out_e927_dir}/${out_e927_name}${ECHPL}" "ELSCF${CNMEXP}ALBC0${icoupl}"
+    done
+else
+for ((j = $start_ech; j <= $end_ech; j += $step_ech)); do
+  ECHPL=$(printf "%02d" $j)
+  ln -sf "${out_e927_dir}/${out_e927_name}${ECHPL}" "ELSCF${CNMEXP}ALBC0${ECHPL}"
 done
+
+fi
+
+  set +x
+
+ # fichiers coupleurs 
+ln -sf ${out_e927_dir}/${out_e927_name}${ECHPL}  ELSCF${CNMEXP}ALBC0${ECHPL} 
+
 
 cp ELSCF${CNMEXP}ALBC000 ICMSH${CNMEXP}INIT
 
-ln -sf $OUT_CPL/INIT_SURF_${AA}${MM}${DD}00 ICMSH${CNMEXP}INIT.sfx
+ln -sf ${out_e927s_dir}/${out_e927s_name} ICMSH${CNMEXP}INIT.sfx
 
 export CFPDOM=ALGE01
 
@@ -150,12 +194,12 @@ if [ -a NODE.001_01 ] ; then
   done
 fi
 
-mkdir -p $OUT_ICMSH $OUT_FPOS
+mkdir -p $OUT_ICMSH_dir $OUT_FPOS_dir
 
 for (( j=$start_ech; j<=$end_ech; j+=$step_ech ));;
 do
  i=$(printf "%02d" $j)
-mv ICMSHAL03+00${i} $OUT_ICMSH
-mv PFAL03ALGE01+00${i} $OUT_FPOS
+mv ICMSHAL03+00${i} ${OUT_ICMSH_dir}/${OUT_ICMSH_name}${i}
+mv PFAL03ALGE01+00${i} ${OUT_FPOS_dir}/${OUT_FPOS_name}${i}
 
 done

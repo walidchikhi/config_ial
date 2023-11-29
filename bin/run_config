@@ -69,4 +69,5 @@ export CONFIG_FILE=${CONFIG_FILE}
 
 
 echo 'The Job Running : '   ${ial_config_rep}/src/${JOB_NAME}/job
+echo 'The Config File : '   ${CONFIG_FILE}
 sbatch ${ial_config_rep}/src/${JOB_NAME}/job  $CONFIG_FILE

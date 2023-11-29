@@ -16,13 +16,13 @@ tmpdir_927_surfex=
 tmpdir_e001=
 
 #== IO DATA DIRS 
-# INP COUPLAGE / surfex de forme ${INP_e927_dir}/${Inp_e927_name}_${iech}  : iech en 2 chiffres
+# INP COUPLAGE / surfex de forme ${INP_e927_dir}/${Inp_e927_name}${iech}  : iech en 2 chiffres
 INP_e927_dir=
 Inp_e927_name=
-# Coupleurs ; In e001  de forme :  ${out_e927_dir}/${out_e927_name}_${iech}  : iech en 2 chiffres
+# Coupleurs ; In e001  de forme :  ${out_e927_dir}/${out_e927_name}${iech}  : iech en 2 chiffres
 out_e927_dir=/onm/dem/home/wchikhi/output/AROME/CPL/$DD$MM$AA
 out_e927_name=
-
+out_e927s_name=
 # output e001 
 OUT_ICMSH_dir=
 OUT_FPOS_dir=

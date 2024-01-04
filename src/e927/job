@@ -66,7 +66,7 @@ echo $AA$MM$JJ
 
 #================== CREATE DIRECTORIES AND COOPY NEEDED FILES ========
 
-mkdir -p $OUT_CPL
+mkdir -p $out_e927_dir
 mkdir -p $tmpdir_e927
 cd $tmpdir_e927
 
